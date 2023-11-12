@@ -1,5 +1,5 @@
-import { AnalysisResult, HandledQuestionMetadata, QuestionMetadata } from './interface';
-import { regexps } from './regexp';
+import { AnalysisResult, HandledQuestionMetadata, QuestionMetadata, QuestionMetadataRegexpGroup } from './interface';
+import { default_title_metadata_regexp_group } from './regexp';
 
 /**
  * 题库解析
@@ -185,10 +185,20 @@ export function handleQuestionMetadata(
 	results: (AnalysisResult & {
 		/** 题目信息 */
 		metadata?: QuestionMetadata & HandledQuestionMetadata;
-	})[]
+	})[],
+	options?: {
+		title_metadata_regexp_group?: QuestionMetadataRegexpGroup[];
+		extra_title_metadata_regexp_group?: QuestionMetadataRegexpGroup;
+	}
 ) {
 	for (const result of results) {
-		for (const item of regexps) {
+		const title_metadata_regexp_group = // 如果没有指定，则使用默认的题目信息解析组
+			(options?.title_metadata_regexp_group ?? default_title_metadata_regexp_group).concat(
+				// 额外的题目信息解析组
+				options?.extra_title_metadata_regexp_group ?? []
+			);
+		// 开始解析题目信息
+		for (const item of title_metadata_regexp_group) {
 			const match = result.title.match(item.regexp);
 
 			if (match) {
@@ -196,7 +206,7 @@ export function handleQuestionMetadata(
 				for (const group of item.groups) {
 					metadata[group[0]] = match[group[1]];
 				}
-				metadata.title = result.title.replace(item.regexp, '').trim();
+				metadata.handled_title = result.title.replace(item.regexp, '').trim();
 				metadata.hit_regexp = item.regexp;
 				result.metadata = metadata;
 				break;

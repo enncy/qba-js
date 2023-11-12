@@ -2,9 +2,9 @@
   typeof exports === "object" && typeof module !== "undefined" ? factory(exports) : typeof define === "function" && define.amd ? define(["exports"], factory) : (global = typeof globalThis !== "undefined" ? globalThis : global || self, factory(global.qba = {}));
 })(this, function(exports2) {
   "use strict";
-  const regexps = [
+  const title_metadata_regexps = [
     {
-      regexp: /(\d{1,4})\s*[:：、.,) ]\s*[(（[【{]\s*(.{2,4}题)\s*，\s*(.+)分\s*[}】\]）)]/,
+      regexp: /(^\d{1,4})\s*[:：、.,) ]\s*[(（[【{]\s*(.{2,4}题)\s*，\s*(.+)分\s*[}】\]）)]/,
       groups: [
         ["index", 1],
         ["type", 2],
@@ -19,7 +19,7 @@
       ]
     },
     {
-      regexp: /(\d{1,4})\s*[:：、.,) ]\s*[(（[【{]\s*(.{2,4}题)\s*[}】\]）)]/,
+      regexp: /(^\d{1,4})\s*[:：、.,) ]\s*[(（[【{]\s*(.{2,4}题)\s*[}】\]）)]/,
       groups: [
         ["index", 1],
         ["type", 2]
@@ -28,10 +28,14 @@
     {
       regexp: /[(（[【{]\s*(.{2,4})题\s*[}】\]）)]/,
       groups: [["type", 1]]
+    },
+    {
+      regexp: /(^\d{1,4})\s*[:：、.,) ]/,
+      groups: [["index", 1]]
     }
   ];
   function analysis(content) {
-    var _a, _b, _c, _d;
+    var _a, _b, _c;
     const results = [];
     const lines = content.split("\n").map((l) => l.trim()).filter(String);
     let count = 0;
@@ -70,7 +74,7 @@
             break;
           }
         }
-      } else if (line.match(/^A/) && ((_b = (_a = (line + "\n").match(/[A-J].{1,}?(?:[ \n])/g)) == null ? void 0 : _a.length) != null ? _b : 0) >= 2) {
+      } else if (line.match(/^A/) && (((_a = (line + "\n").match(/[A-J].{1,}?(?:[ \n])/g)) == null ? void 0 : _a.length) ?? 0) >= 2) {
         save = false;
         if (saveLines.length) {
           saveLines.pop();
@@ -90,7 +94,7 @@
       }
       const ANSWER_REGEXP = /([(（[{【)]\s*)([A-J]+)(\s*[】}\]）)])/;
       if (result.title.match(ANSWER_REGEXP)) {
-        result.answers = (((_c = result.title.match(ANSWER_REGEXP)) == null ? void 0 : _c[2]) || "").split("");
+        result.answers = (((_b = result.title.match(ANSWER_REGEXP)) == null ? void 0 : _b[2]) || "").split("");
       }
       if (result.title) {
         if (result.answers.length) {
@@ -114,13 +118,13 @@
         }
         while (i < answerArea.length) {
           const line = answerArea[i];
-          if (line.includes("\u6211\u7684\u7B54\u6848")) {
+          if (line.includes("我的答案")) {
             if (answerStart && answers.length) {
               break;
             }
-          } else if (["\u7B54\u6848", "\u6B63\u786E\u7B54\u6848", "\u6807\u51C6\u7B54\u6848", "\u7B54\u6848\u89E3\u6790"].some((i2) => line.includes(i2))) {
+          } else if (["答案", "正确答案", "标准答案", "答案解析"].some((i2) => line.includes(i2))) {
             if (line.match(/[A-J]{1,10}/)) {
-              answers = ((_d = line.match(/[A-J]{1,10}/)) == null ? void 0 : _d[0].split("")) || [];
+              answers = ((_c = line.match(/[A-J]{1,10}/)) == null ? void 0 : _c[0].split("")) || [];
               break;
             }
             answerStart = true;
@@ -153,7 +157,7 @@
   }
   function handleQuestionMetadata(results) {
     for (const result of results) {
-      for (const item of regexps) {
+      for (const item of title_metadata_regexps) {
         const match = result.title.match(item.regexp);
         if (match) {
           const metadata = /* @__PURE__ */ Object.create({});
@@ -177,5 +181,5 @@
   exports2.analysis = analysis;
   exports2.handleQuestionMetadata = handleQuestionMetadata;
   exports2.parse = parse;
-  Object.defineProperties(exports2, { __esModule: { value: true }, [Symbol.toStringTag]: { value: "Module" } });
+  Object.defineProperty(exports2, Symbol.toStringTag, { value: "Module" });
 });

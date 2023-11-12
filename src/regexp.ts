@@ -1,11 +1,8 @@
-import { QuestionMetadata } from './interface';
+import { QuestionMetadataRegexpGroup } from './interface';
 
-export const regexps: {
-	regexp: RegExp;
-	groups: [keyof QuestionMetadata, number][];
-}[] = [
+export const default_title_metadata_regexp_group: QuestionMetadataRegexpGroup[] = [
 	{
-		regexp: /(\d{1,4})\s*[:：、.,) ]\s*[(（[【{]\s*(.{2,4}题)\s*，\s*(.+)分\s*[}】\]）)]/,
+		regexp: /(^\d{1,4})\s*[:：、.,) ]\s*[(（[【{]\s*(.{2,4}题)\s*，\s*(.+)分\s*[}】\]）)]/,
 		groups: [
 			['index', 1],
 			['type', 2],
@@ -20,7 +17,7 @@ export const regexps: {
 		]
 	},
 	{
-		regexp: /(\d{1,4})\s*[:：、.,) ]\s*[(（[【{]\s*(.{2,4}题)\s*[}】\]）)]/,
+		regexp: /(^\d{1,4})\s*[:：、.,) ]\s*[(（[【{]\s*(.{2,4}题)\s*[}】\]）)]/,
 		groups: [
 			['index', 1],
 			['type', 2]
@@ -29,5 +26,9 @@ export const regexps: {
 	{
 		regexp: /[(（[【{]\s*(.{2,4})题\s*[}】\]）)]/,
 		groups: [['type', 1]]
+	},
+	{
+		regexp: /(^\d{1,4})\s*[:：、.,) ]/,
+		groups: [['index', 1]]
 	}
 ];
