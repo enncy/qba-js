@@ -1,0 +1,17 @@
+{
+	"compilerOptions": {
+		"outDir": "./lib",
+		"target": "ES2015",
+		"module": "commonjs",
+		"moduleResolution": "Node",
+		"declaration": true,
+		"emitDecoratorMetadata": true,
+		"experimentalDecorators": true,
+		"esModuleInterop": true,
+		"noImplicitAny": true,
+		"strictNullChecks": true,
+		"incremental": true,
+		"skipLibCheck": true,
+		"skipDefaultLibCheck": true
+	}
+}
