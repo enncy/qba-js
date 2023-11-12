@@ -36,6 +36,7 @@ export type AnalysisResult = {
 	title: string;
 	options: string[];
 	answers: string[];
+	answerArea: string[];
 	/** 是否解析完成 */
 	complete: boolean;
 };

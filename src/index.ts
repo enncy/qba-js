@@ -1,6 +1,9 @@
 import { AnalysisResult, HandledQuestionMetadata, QuestionMetadata, QuestionMetadataRegexpGroup } from './interface';
 import { default_title_metadata_regexp_group } from './regexp';
 
+const STANDARD_ANSWER_START = ['答案', '正确答案', '标准答案', '答案解析'];
+const MY_ANSWER_START = ['我的答案'];
+
 /**
  * 题库解析
  * @param content 题库文本
@@ -21,28 +24,33 @@ export function analysis(content: string): AnalysisResult[] {
 	// 答案区域
 	let saveLines: string[] = [];
 
+	const startSaveGroup = () => {
+		save = false;
+		// 存储答案区域
+		if (saveLines.length) {
+			saveLines.pop();
+			saveGroup.push(saveLines);
+			saveLines = [];
+		}
+	};
+
 	// 遍历每一行
 	while (count < lines.length) {
 		const result: AnalysisResult = {
 			title: '',
 			options: [],
 			answers: [],
-			complete: false
+			complete: false,
+			answerArea: []
 		};
 
 		const line = lines[count];
 		const nextLine = lines[count + 1] || '';
 
-		// 提取选项，题目
+		// 如果此行是A开头，开始尝试提取选项，题目
 		if (line.match(/^A/) && nextLine.match(/^B/)) {
 			// 如果此时到达了题目，那么保存答案区域则结束
-			save = false;
-			// 存储答案区域
-			if (saveLines.length) {
-				saveLines.pop();
-				saveGroup.push(saveLines);
-				saveLines = [];
-			}
+			startSaveGroup();
 
 			// 此时上一部分将作为题目
 			result.title = getTitleFromPreviousLine(lines, count).join('\n');
@@ -69,15 +77,19 @@ export function analysis(content: string): AnalysisResult[] {
 		}
 		// 如果选项全部挤在一行
 		else if (line.match(/^A/) && ((line + '\n').match(/[A-J].{1,}?(?:[ \n])/g)?.length ?? 0) >= 2) {
-			save = false;
-			// 存储答案区域
-			if (saveLines.length) {
-				saveLines.pop();
-				saveGroup.push(saveLines);
-				saveLines = [];
-			}
+			startSaveGroup();
+			// 提取选项
 			result.options = ((line + '\n').match(/[A-J].+?(?:[ \n])/g) || []).map((s) => String(s).trim());
-
+			// 此时上一部分将作为题目
+			result.title = getTitleFromPreviousLine(lines, count).join('\n');
+			save = true;
+		}
+		// 如果此行是答案区域的开始，并且没有选项
+		else if (
+			(MY_ANSWER_START.some((i) => line.includes(i)) || STANDARD_ANSWER_START.some((i) => line.includes(i))) &&
+			result.options.length === 0
+		) {
+			startSaveGroup();
 			// 此时上一部分将作为题目
 			result.title = getTitleFromPreviousLine(lines, count).join('\n');
 			save = true;
@@ -123,14 +135,16 @@ export function analysis(content: string): AnalysisResult[] {
 				count++;
 				continue;
 			}
+			result.answerArea = answerArea;
+
 			while (i < answerArea.length) {
 				const line = answerArea[i];
-				if (line.includes('我的答案')) {
+				if (MY_ANSWER_START.some((i) => line.includes(i))) {
 					// 如果已经提取出了答案，证明我的答案在正确答案后面，此时无需处理了，直接退出循环
 					if (answerStart && answers.length) {
 						break;
 					}
-				} else if (['答案', '正确答案', '标准答案', '答案解析'].some((i) => line.includes(i))) {
+				} else if (STANDARD_ANSWER_START.some((i) => line.includes(i))) {
 					// 如果答案以ABCD的形式存在，那么直接提取
 					if (line.match(/[A-J]{1,10}/)) {
 						answers = line.match(/[A-J]{1,10}/)?.[0].split('') || [];
