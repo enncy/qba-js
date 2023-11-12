@@ -2,11 +2,20 @@
 	"name": "qba-js",
 	"version": "0.0.1",
 	"description": "question bank analyzer",
-	"main": "index.js",
+	"types": "./lib/src/index.d.ts",
+	"main": "./lib/src/index.js",
+	"files": [
+		"lib",
+		"dist"
+	],
 	"directories": {
 		"test": "tests"
 	},
-	"scripts": {},
+	"scripts": {
+		"build": "pnpm format && tsc",
+		"lint": "pnpm format && eslint  ./packages --ext .ts,.tsx,.js,.jsx --fix",
+		"format": "prettier -c ./.prettierrc.json  **/*.ts  **/*.js  --write"
+	},
 	"author": "enncy",
 	"license": "MIT",
 	"repository": {
@@ -16,5 +25,8 @@
 	"bugs": {
 		"url": "https://github.com/enncy/qba-js/issues"
 	},
-	"homepage": "https://github.com/enncy/qba-js#readme"
+	"homepage": "https://github.com/enncy/qba-js#readme",
+	"devDependencies": {
+		"prettier": "^3.0.3"
+	}
 }

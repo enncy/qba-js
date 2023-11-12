@@ -1,0 +1,33 @@
+{
+	"env": {
+		"node": true,
+		"commonjs": true,
+		"browser": true,
+		"es6": true
+	},
+	"extends": ["standard", "prettier"],
+	"parserOptions": {
+		"ecmaVersion": "latest",
+		"parser": "@typescript-eslint/parser",
+		"sourceType": "module"
+	},
+	"plugins": ["@typescript-eslint"],
+	"rules": {
+		"max-len": [
+			2,
+			{
+				"code": 120,
+				"tabWidth": 2,
+				"ignoreComments": true,
+				"ignoreStrings": true
+			}
+		],
+		"indent": "off",
+		"camelcase": "off",
+		"vue/multi-word-component-names": "off",
+		"vue/valid-attribute-name": "off",
+		"space-before-function-paren": "off",
+		"func-call-spacing": "off",
+		"no-redeclare": "off"
+	}
+}
