@@ -3,7 +3,7 @@
 	"version": "0.0.1",
 	"description": "question bank analyzer",
 	"types": "./lib/src/index.d.ts",
-	"main": "./lib/src/index.js",
+	"main": "./dist/index.js",
 	"files": [
 		"lib",
 		"dist"
@@ -12,7 +12,7 @@
 		"test": "tests"
 	},
 	"scripts": {
-		"build": "pnpm format && tsc",
+		"build": "pnpm format && tsc && vite build",
 		"lint": "pnpm format && eslint  ./packages --ext .ts,.tsx,.js,.jsx --fix",
 		"format": "prettier -c ./.prettierrc.json  **/*.ts  **/*.js  --write"
 	},
@@ -27,6 +27,7 @@
 	},
 	"homepage": "https://github.com/enncy/qba-js#readme",
 	"devDependencies": {
-		"prettier": "^3.0.3"
+		"prettier": "^3.0.3",
+		"vite": "^4.5.0"
 	}
 }
