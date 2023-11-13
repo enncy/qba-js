@@ -46,7 +46,7 @@
 
 #### Defined in
 
-[index.ts:272](https://github.com/enncy/qba-js/blob/1365671/src/index.ts#L272)
+[index.ts:272](https://github.com/enncy/qba-js/blob/6b0ea66/src/index.ts#L272)
 
 ___
 
@@ -62,18 +62,28 @@ ___
 | :------ | :------ | :------ |
 | `results` | [`AnalysisResultWthMetadata`](interfaces/AnalysisResultWthMetadata.md)[] | 解析结果 |
 | `pathOrName` | `string` | 文件路径或者文件名 |
-| `type` | ``"json"`` \| ``"xlsx"`` \| ``"txt"`` \| ``"markdown"`` | - |
-| `options?` | `Object` | - |
-| `options.answerSplit?` | `string` | - |
-| `options.optionsSplit?` | `string` | - |
+| `type` | ``"json"`` \| ``"xlsx"`` \| ``"txt"`` \| ``"markdown"`` | 文件类型 |
+| `options?` | `Object` | 选项 |
+| `options.answerSplit?` | `string` | 答案分隔符，当 type 为 xlsx 时有效 **`Default`** ```ts '\n' ``` |
+| `options.optionsSplit?` | `string` | 选项分隔符，当 type 为 xlsx 时有效 **`Default`** ```ts '\n' ``` |
 
 #### Returns
 
 `void`
 
+**`Example`**
+
+```js
+const results = qba.parse('...')
+// web
+qba.writeToFile(results,'result.xlsx','xlsx')
+// nodejs
+qba.writeToFile(results,'./xxx/result.xlsx','xlsx')
+```
+
 #### Defined in
 
-[index.ts:308](https://github.com/enncy/qba-js/blob/1365671/src/index.ts#L308)
+[index.ts:321](https://github.com/enncy/qba-js/blob/6b0ea66/src/index.ts#L321)
 
 ## Variables
 
@@ -85,7 +95,7 @@ CX试卷处理器
 
 #### Defined in
 
-[handlers/cx.ts:6](https://github.com/enncy/qba-js/blob/1365671/src/handlers/cx.ts#L6)
+[handlers/cx.ts:6](https://github.com/enncy/qba-js/blob/6b0ea66/src/handlers/cx.ts#L6)
 
 ___
 
@@ -97,4 +107,4 @@ ___
 
 #### Defined in
 
-[regexp.ts:6](https://github.com/enncy/qba-js/blob/1365671/src/regexp.ts#L6)
+[regexp.ts:6](https://github.com/enncy/qba-js/blob/6b0ea66/src/regexp.ts#L6)
