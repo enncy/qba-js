@@ -7,6 +7,7 @@ import {
 	QuestionMetadataRegexpGroup
 } from './interface';
 import { default_title_metadata_regexp_group } from './regexp';
+import { utils, writeFile } from 'xlsx';
 
 const STANDARD_ANSWER_START = ['答案', '正确答案', '标准答案', '答案解析'];
 const MY_ANSWER_START = ['我的答案'];
@@ -241,7 +242,7 @@ export function handleQuestionMetadata(
 		/** 题目信息解析组 */
 		title_metadata_regexp_group?: QuestionMetadataRegexpGroup[];
 	}
-) {
+): AnalysisResultWthMetadata[] {
 	for (const result of results) {
 		const title_metadata_regexp_group = options?.title_metadata_regexp_group ?? default_title_metadata_regexp_group; // 如果没有指定，则使用默认的题目信息解析组
 		// 开始解析题目信息
@@ -283,7 +284,7 @@ export function parse(
 		 */
 		title_metadata_regexp_group?: QuestionMetadataRegexpGroup[];
 	}
-) {
+): AnalysisResultWthMetadata[] {
 	// 前置处理器
 	for (const handler of options?.handlers || []) {
 		content = handler.before ? handler.before(content) : content;
@@ -297,4 +298,84 @@ export function parse(
 		handledResults = handler.after ? handler.after(handledResults) : handledResults;
 	}
 	return handledResults;
+}
+
+/**
+ * 导出结果文件
+ *
+ * @example
+ *
+ * ```js
+ * const results = qba.parse('...')
+ * // web
+ * qba.writeToFile(results,'result.xlsx','xlsx')
+ * // nodejs
+ * qba.writeToFile(results,'./xxx/result.xlsx','xlsx')
+ * ```
+ *
+ * @param results 			解析结果
+ * @param pathOrName 		文件路径或者文件名
+ * @param type 				文件类型
+ * @param options 			选项
+ */
+export function writeToFile(
+	results: AnalysisResultWthMetadata[],
+	pathOrName: string,
+	type: 'json' | 'xlsx' | 'txt' | 'markdown',
+	options?: {
+		/**
+		 * 选项分隔符，当 type 为 xlsx 时有效
+		 * @default '\n'
+		 */
+		optionsSplit?: string;
+		/**
+		 * 答案分隔符，当 type 为 xlsx 时有效
+		 * @default '\n'
+		 */
+		answerSplit?: string;
+	}
+) {
+	const res = results.map((r) => ({
+		title: r.metadata?.handled_title,
+		type: r.metadata?.type,
+		options: r.options,
+		answers: r.answers
+	}));
+
+	if (type === 'json') {
+		saveFile(pathOrName, JSON.stringify(res, null, 4));
+	} else if (type === 'markdown' || type === 'txt') {
+		const content = res
+			.map((r) => `【${r.type}】${r.title}\n${r.options.join('\n')} \n正确答案：\n${r.answers.join('\n')}\n-------`)
+			.join('\n');
+		saveFile(pathOrName, content);
+	} else if (type === 'xlsx') {
+		const data = results.map((r) => ({
+			题目: r.metadata?.handled_title,
+			类型: r.metadata?.type,
+			选项: r.options.join(options?.optionsSplit || '\n'),
+			答案: r.answers.join(options?.answerSplit || '\n')
+		}));
+		const sheet = utils.json_to_sheet(data);
+		const workbook = utils.book_new();
+		utils.book_append_sheet(workbook, sheet, 'Sheet1');
+		writeFile(workbook, pathOrName);
+	} else {
+		throw new Error('不支持的文件类型 : ' + type);
+	}
+}
+
+function saveFile(filename: string, data: string) {
+	if (typeof window.require === 'undefined') {
+		const a = document.createElement('a');
+		const blob = new Blob([data], { type: 'octet/stream' });
+		const url = URL.createObjectURL(blob);
+		a.href = url;
+		a.download = filename;
+		a.click();
+		URL.revokeObjectURL(url);
+	} else {
+		const fs = require('fs') as typeof import('fs');
+		fs.writeFileSync(filename, data);
+	}
 }

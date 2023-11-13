@@ -7,6 +7,7 @@
 ### Functions
 
 - [parse](modules.md#parse)
+- [writeToFile](modules.md#writetofile)
 
 ### Interfaces
 
@@ -45,7 +46,34 @@
 
 #### Defined in
 
-[index.ts:271](https://github.com/enncy/qba-js/blob/1aeebca/src/index.ts#L271)
+[index.ts:272](https://github.com/enncy/qba-js/blob/1365671/src/index.ts#L272)
+
+___
+
+### writeToFile
+
+▸ **writeToFile**(`results`, `pathOrName`, `type`, `options?`): `void`
+
+导出结果文件
+
+#### Parameters
+
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `results` | [`AnalysisResultWthMetadata`](interfaces/AnalysisResultWthMetadata.md)[] | 解析结果 |
+| `pathOrName` | `string` | 文件路径或者文件名 |
+| `type` | ``"json"`` \| ``"xlsx"`` \| ``"txt"`` \| ``"markdown"`` | - |
+| `options?` | `Object` | - |
+| `options.answerSplit?` | `string` | - |
+| `options.optionsSplit?` | `string` | - |
+
+#### Returns
+
+`void`
+
+#### Defined in
+
+[index.ts:308](https://github.com/enncy/qba-js/blob/1365671/src/index.ts#L308)
 
 ## Variables
 
@@ -57,7 +85,7 @@ CX试卷处理器
 
 #### Defined in
 
-[handlers/cx.ts:6](https://github.com/enncy/qba-js/blob/1aeebca/src/handlers/cx.ts#L6)
+[handlers/cx.ts:6](https://github.com/enncy/qba-js/blob/1365671/src/handlers/cx.ts#L6)
 
 ___
 
@@ -69,4 +97,4 @@ ___
 
 #### Defined in
 
-[regexp.ts:6](https://github.com/enncy/qba-js/blob/1aeebca/src/regexp.ts#L6)
+[regexp.ts:6](https://github.com/enncy/qba-js/blob/1365671/src/regexp.ts#L6)

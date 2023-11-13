@@ -28,10 +28,15 @@
 	},
 	"homepage": "https://github.com/enncy/qba-js#readme",
 	"devDependencies": {
+		"@types/node": "^20.9.0",
 		"prettier": "^3.0.3",
 		"typedoc": "^0.25.3",
 		"typedoc-plugin-markdown": "^3.17.1",
 		"typedoc-theme-hierarchy": "^4.1.2",
+		"typescript": "^5.2.2",
 		"vite": "^4.5.0"
+	},
+	"dependencies": {
+		"xlsx": "^0.18.5"
 	}
 }
