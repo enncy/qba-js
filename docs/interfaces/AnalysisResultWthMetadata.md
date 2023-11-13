@@ -2,7 +2,7 @@
 
 # Interface: AnalysisResultWthMetadata
 
-题库解析结果
+解析结果
 
 ## Hierarchy
 
@@ -62,6 +62,8 @@ ___
 ### metadata
 
 • `Optional` **metadata**: [`QuestionMetadata`](QuestionMetadata.md) & [`HandledQuestionMetadata`](HandledQuestionMetadata.md)
+
+题目信息
 
 ___
 

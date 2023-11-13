@@ -21,11 +21,15 @@ export interface HandledQuestionMetadata {
 }
 
 /**
- * 题目信息解析组
+ * 题目信息解析组，用于解析题目中的信息，例如题目类型、题目分数、题目索引等
  */
 export interface QuestionMetadataRegexpGroup {
+	/** 正则表达式 */
 	regexp: RegExp;
-	/** 第一个是对应的信息字段，第二个是所在的正则结果组的位置 */
+	/**
+	 * 第一个是对应的信息字段，第二个是所在的正则结果组的位置
+	 * 例如: [ ['type', 1] ] 表示将正则结果组的第一个元素赋值给 type 属性
+	 */
 	groups: [keyof QuestionMetadata, number][];
 }
 
@@ -45,7 +49,9 @@ export interface AnalysisResult {
 	complete: boolean;
 }
 
+/** 解析结果 */
 export interface AnalysisResultWthMetadata extends AnalysisResult {
+	/** 题目信息 */
 	metadata?: (QuestionMetadata & HandledQuestionMetadata) | undefined;
 }
 

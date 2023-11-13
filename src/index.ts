@@ -238,16 +238,12 @@ function getTitleFromPreviousLine(lines: string[], index: number) {
 export function handleQuestionMetadata(
 	results: AnalysisResultWthMetadata[],
 	options?: {
+		/** 题目信息解析组 */
 		title_metadata_regexp_group?: QuestionMetadataRegexpGroup[];
-		extra_title_metadata_regexp_group?: QuestionMetadataRegexpGroup;
 	}
 ) {
 	for (const result of results) {
-		const title_metadata_regexp_group = // 如果没有指定，则使用默认的题目信息解析组
-			(options?.title_metadata_regexp_group ?? default_title_metadata_regexp_group).concat(
-				// 额外的题目信息解析组
-				options?.extra_title_metadata_regexp_group ?? []
-			);
+		const title_metadata_regexp_group = options?.title_metadata_regexp_group ?? default_title_metadata_regexp_group; // 如果没有指定，则使用默认的题目信息解析组
 		// 开始解析题目信息
 		for (const item of title_metadata_regexp_group) {
 			const match = result.title.match(item.regexp);
@@ -275,8 +271,17 @@ export function handleQuestionMetadata(
 export function parse(
 	content: string,
 	options?: {
-		/** 处理器 */
+		/**
+		 * 处理器
+		 * @see {Handler}
+		 */
 		handlers?: Handler[];
+		/**
+		 * 题目信息解析组
+		 *
+		 * @default {@link default_title_metadata_regexp_group}
+		 */
+		title_metadata_regexp_group?: QuestionMetadataRegexpGroup[];
 	}
 ) {
 	// 前置处理器
@@ -284,7 +289,9 @@ export function parse(
 		content = handler.before ? handler.before(content) : content;
 	}
 	const results = analysis(content);
-	let handledResults = handleQuestionMetadata(results);
+	let handledResults = handleQuestionMetadata(results, {
+		title_metadata_regexp_group: options?.title_metadata_regexp_group || default_title_metadata_regexp_group
+	});
 	// 后置处理器
 	for (const handler of options?.handlers || []) {
 		handledResults = handler.after ? handler.after(handledResults) : handledResults;

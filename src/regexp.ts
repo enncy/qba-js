@@ -1,5 +1,8 @@
 import { QuestionMetadataRegexpGroup } from './interface';
 
+/**
+ * 默认的题目信息解析组
+ */
 export const default_title_metadata_regexp_group: QuestionMetadataRegexpGroup[] = [
 	{
 		regexp: /(^\d{1,4})\s*[:：、.,) ]\s*[(（[【{]\s*(.{2,4}题)\s*，\s*(.+)分\s*[}】\]）)]/,

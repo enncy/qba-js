@@ -6,8 +6,6 @@
 
 ### Functions
 
-- [analysis](modules.md#analysis)
-- [handleQuestionMetadata](modules.md#handlequestionmetadata)
 - [parse](modules.md#parse)
 
 ### Interfaces
@@ -22,47 +20,9 @@
 ### Variables
 
 - [CXHandler](modules.md#cxhandler)
+- [default\_title\_metadata\_regexp\_group](modules.md#default_title_metadata_regexp_group)
 
 ## Functions
-
-### analysis
-
-▸ **analysis**(`content`): [`AnalysisResult`](interfaces/AnalysisResult.md)[]
-
-题库解析
-
-#### Parameters
-
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `content` | `string` | 题库文本 |
-
-#### Returns
-
-[`AnalysisResult`](interfaces/AnalysisResult.md)[]
-
-___
-
-### handleQuestionMetadata
-
-▸ **handleQuestionMetadata**(`results`, `options?`): [`AnalysisResultWthMetadata`](interfaces/AnalysisResultWthMetadata.md)[]
-
-处理题目信息
-
-#### Parameters
-
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `results` | [`AnalysisResultWthMetadata`](interfaces/AnalysisResultWthMetadata.md)[] | 解析结果 |
-| `options?` | `Object` | - |
-| `options.extra_title_metadata_regexp_group?` | [`QuestionMetadataRegexpGroup`](interfaces/QuestionMetadataRegexpGroup.md) | - |
-| `options.title_metadata_regexp_group?` | [`QuestionMetadataRegexpGroup`](interfaces/QuestionMetadataRegexpGroup.md)[] | - |
-
-#### Returns
-
-[`AnalysisResultWthMetadata`](interfaces/AnalysisResultWthMetadata.md)[]
-
-___
 
 ### parse
 
@@ -76,7 +36,8 @@ ___
 | :------ | :------ | :------ |
 | `content` | `string` | 题库文本 |
 | `options?` | `Object` | - |
-| `options.handlers?` | [`Handler`](interfaces/Handler.md)[] | 处理器 |
+| `options.handlers?` | [`Handler`](interfaces/Handler.md)[] | 处理器 **`See`** |
+| `options.title_metadata_regexp_group?` | [`QuestionMetadataRegexpGroup`](interfaces/QuestionMetadataRegexpGroup.md)[] | 题目信息解析组 **`Default`** ```ts {default_title_metadata_regexp_group} ``` |
 
 #### Returns
 
@@ -89,3 +50,11 @@ ___
 • `Const` **CXHandler**: [`Handler`](interfaces/Handler.md)
 
 CX试卷处理器
+
+___
+
+### default\_title\_metadata\_regexp\_group
+
+• `Const` **default\_title\_metadata\_regexp\_group**: [`QuestionMetadataRegexpGroup`](interfaces/QuestionMetadataRegexpGroup.md)[]
+
+默认的题目信息解析组

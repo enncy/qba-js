@@ -12,7 +12,7 @@
 		"test": "tests"
 	},
 	"scripts": {
-		"build": "pnpm format && tsc && vite build && build:docs",
+		"build": "pnpm format && tsc && vite build && npm run  build:docs",
 		"lint": "pnpm format && eslint  ./packages --ext .ts,.tsx,.js,.jsx --fix",
 		"format": "prettier -c ./.prettierrc.json  **/*.ts  **/*.js  --write",
 		"build:docs": "typedoc src/export.ts"
