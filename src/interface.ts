@@ -40,3 +40,26 @@ export type AnalysisResult = {
 	/** 是否解析完成 */
 	complete: boolean;
 };
+
+export type AnalysisResultWthMetadata = AnalysisResult & {
+	metadata?: (QuestionMetadata & HandledQuestionMetadata) | undefined;
+};
+
+/**
+ * 处理器
+ */
+export interface Handler {
+	/**
+	 * 题库文本必须满足一定的格式才能被成功解析
+	 * 格式:
+	 *
+	 * {数字}{任意分隔字符}{题目}
+	 * {选项}/{答案}
+	 *
+	 * 如果题库文本不满足格式，则需要在此处进行处理
+	 *
+	 * @param content 题库文本
+	 */
+	before(content: string): string;
+	after(results: AnalysisResultWthMetadata[]): AnalysisResultWthMetadata[];
+}

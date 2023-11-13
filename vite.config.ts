@@ -11,7 +11,7 @@ export default defineConfig({
 		minify: false,
 		/** 打包库， 全局名字为 OCS */
 		lib: {
-			entry: './src/index.ts',
+			entry: './src/export.ts',
 			name: 'qba',
 			fileName: () => 'index.js',
 			formats: ['umd']
