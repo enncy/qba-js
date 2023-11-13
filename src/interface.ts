@@ -1,49 +1,53 @@
 /**
  * 题目信息
  */
-export type QuestionMetadata = {
+export interface QuestionMetadata {
 	/** 题目类型 */
 	type?: string;
 	/** 题目分数 */
 	score?: string;
 	/** 题目索引 */
 	index?: string;
-};
+}
 
 /**
  * 处理过的题目信息
  */
-export type HandledQuestionMetadata = {
+export interface HandledQuestionMetadata {
 	/** 处理过的题目 */
 	handled_title: string;
 	/** 命中的正则表达式  */
 	hit_regexp: RegExp;
-};
+}
 
 /**
  * 题目信息解析组
  */
-export type QuestionMetadataRegexpGroup = {
+export interface QuestionMetadataRegexpGroup {
 	regexp: RegExp;
 	/** 第一个是对应的信息字段，第二个是所在的正则结果组的位置 */
 	groups: [keyof QuestionMetadata, number][];
-};
+}
 
 /**
  * 题库解析结果
  */
-export type AnalysisResult = {
+export interface AnalysisResult {
+	/** 题目 */
 	title: string;
+	/** 选项 */
 	options: string[];
+	/** 答案 */
 	answers: string[];
+	/** 答案区域 */
 	answerArea: string[];
 	/** 是否解析完成 */
 	complete: boolean;
-};
+}
 
-export type AnalysisResultWthMetadata = AnalysisResult & {
+export interface AnalysisResultWthMetadata extends AnalysisResult {
 	metadata?: (QuestionMetadata & HandledQuestionMetadata) | undefined;
-};
+}
 
 /**
  * 处理器

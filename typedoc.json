@@ -1,0 +1,10 @@
+{
+	"$schema": "https://typedoc.org/schema.json",
+	"entryPoints": ["./src/export.ts"],
+	"out": "docs",
+	"categoryOrder": ["Functions"],
+	"entryPointStrategy": "expand",
+	"plugin": ["typedoc-plugin-markdown"],
+	"disableSources": true,
+	"groupOrder": ["Functions"]
+}

@@ -12,9 +12,10 @@
 		"test": "tests"
 	},
 	"scripts": {
-		"build": "pnpm format && tsc && vite build",
+		"build": "pnpm format && tsc && vite build && build:docs",
 		"lint": "pnpm format && eslint  ./packages --ext .ts,.tsx,.js,.jsx --fix",
-		"format": "prettier -c ./.prettierrc.json  **/*.ts  **/*.js  --write"
+		"format": "prettier -c ./.prettierrc.json  **/*.ts  **/*.js  --write",
+		"build:docs": "typedoc src/export.ts"
 	},
 	"author": "enncy",
 	"license": "MIT",
@@ -28,6 +29,9 @@
 	"homepage": "https://github.com/enncy/qba-js#readme",
 	"devDependencies": {
 		"prettier": "^3.0.3",
+		"typedoc": "^0.25.3",
+		"typedoc-plugin-markdown": "^3.17.1",
+		"typedoc-theme-hierarchy": "^4.1.2",
 		"vite": "^4.5.0"
 	}
 }
