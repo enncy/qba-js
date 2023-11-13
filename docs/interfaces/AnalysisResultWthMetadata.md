@@ -33,6 +33,10 @@
 
 [AnalysisResult](AnalysisResult.md).[answerArea](AnalysisResult.md#answerarea)
 
+#### Defined in
+
+[interface.ts:47](https://github.com/enncy/qba-js/blob/0785d60/src/interface.ts#L47)
+
 ___
 
 ### answers
@@ -44,6 +48,10 @@ ___
 #### Inherited from
 
 [AnalysisResult](AnalysisResult.md).[answers](AnalysisResult.md#answers)
+
+#### Defined in
+
+[interface.ts:45](https://github.com/enncy/qba-js/blob/0785d60/src/interface.ts#L45)
 
 ___
 
@@ -57,6 +65,10 @@ ___
 
 [AnalysisResult](AnalysisResult.md).[complete](AnalysisResult.md#complete)
 
+#### Defined in
+
+[interface.ts:49](https://github.com/enncy/qba-js/blob/0785d60/src/interface.ts#L49)
+
 ___
 
 ### metadata
@@ -64,6 +76,10 @@ ___
 • `Optional` **metadata**: [`QuestionMetadata`](QuestionMetadata.md) & [`HandledQuestionMetadata`](HandledQuestionMetadata.md)
 
 题目信息
+
+#### Defined in
+
+[interface.ts:55](https://github.com/enncy/qba-js/blob/0785d60/src/interface.ts#L55)
 
 ___
 
@@ -77,6 +93,10 @@ ___
 
 [AnalysisResult](AnalysisResult.md).[options](AnalysisResult.md#options)
 
+#### Defined in
+
+[interface.ts:43](https://github.com/enncy/qba-js/blob/0785d60/src/interface.ts#L43)
+
 ___
 
 ### title
@@ -88,3 +108,7 @@ ___
 #### Inherited from
 
 [AnalysisResult](AnalysisResult.md).[title](AnalysisResult.md#title)
+
+#### Defined in
+
+[interface.ts:41](https://github.com/enncy/qba-js/blob/0785d60/src/interface.ts#L41)

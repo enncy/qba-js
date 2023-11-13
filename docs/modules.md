@@ -37,11 +37,15 @@
 | `content` | `string` | 题库文本 |
 | `options?` | `Object` | - |
 | `options.handlers?` | [`Handler`](interfaces/Handler.md)[] | 处理器 **`See`** |
-| `options.title_metadata_regexp_group?` | [`QuestionMetadataRegexpGroup`](interfaces/QuestionMetadataRegexpGroup.md)[] | 题目信息解析组 **`Default`** ```ts {default_title_metadata_regexp_group} ``` |
+| `options.title_metadata_regexp_group?` | [`QuestionMetadataRegexpGroup`](interfaces/QuestionMetadataRegexpGroup.md)[] | 题目信息解析组 **`Default`** ```ts {@link default_title_metadata_regexp_group} ``` |
 
 #### Returns
 
 [`AnalysisResultWthMetadata`](interfaces/AnalysisResultWthMetadata.md)[]
+
+#### Defined in
+
+[index.ts:271](https://github.com/enncy/qba-js/blob/0785d60/src/index.ts#L271)
 
 ## Variables
 
@@ -51,6 +55,10 @@
 
 CX试卷处理器
 
+#### Defined in
+
+[handlers/cx.ts:6](https://github.com/enncy/qba-js/blob/0785d60/src/handlers/cx.ts#L6)
+
 ___
 
 ### default\_title\_metadata\_regexp\_group
@@ -58,3 +66,7 @@ ___
 • `Const` **default\_title\_metadata\_regexp\_group**: [`QuestionMetadataRegexpGroup`](interfaces/QuestionMetadataRegexpGroup.md)[]
 
 默认的题目信息解析组
+
+#### Defined in
+
+[regexp.ts:6](https://github.com/enncy/qba-js/blob/0785d60/src/regexp.ts#L6)

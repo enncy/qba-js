@@ -27,6 +27,10 @@
 
 [`AnalysisResultWthMetadata`](AnalysisResultWthMetadata.md)[]
 
+#### Defined in
+
+[interface.ts:74](https://github.com/enncy/qba-js/blob/0785d60/src/interface.ts#L74)
+
 ___
 
 ### before
@@ -50,3 +54,7 @@ ___
 #### Returns
 
 `string`
+
+#### Defined in
+
+[interface.ts:73](https://github.com/enncy/qba-js/blob/0785d60/src/interface.ts#L73)

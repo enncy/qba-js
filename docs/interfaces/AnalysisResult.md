@@ -28,6 +28,10 @@
 
 答案区域
 
+#### Defined in
+
+[interface.ts:47](https://github.com/enncy/qba-js/blob/0785d60/src/interface.ts#L47)
+
 ___
 
 ### answers
@@ -35,6 +39,10 @@ ___
 • **answers**: `string`[]
 
 答案
+
+#### Defined in
+
+[interface.ts:45](https://github.com/enncy/qba-js/blob/0785d60/src/interface.ts#L45)
 
 ___
 
@@ -44,6 +52,10 @@ ___
 
 是否解析完成
 
+#### Defined in
+
+[interface.ts:49](https://github.com/enncy/qba-js/blob/0785d60/src/interface.ts#L49)
+
 ___
 
 ### options
@@ -52,6 +64,10 @@ ___
 
 选项
 
+#### Defined in
+
+[interface.ts:43](https://github.com/enncy/qba-js/blob/0785d60/src/interface.ts#L43)
+
 ___
 
 ### title
@@ -59,3 +75,7 @@ ___
 • **title**: `string`
 
 题目
+
+#### Defined in
+
+[interface.ts:41](https://github.com/enncy/qba-js/blob/0785d60/src/interface.ts#L41)

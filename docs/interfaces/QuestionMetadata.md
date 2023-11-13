@@ -20,6 +20,10 @@
 
 题目索引
 
+#### Defined in
+
+[interface.ts:10](https://github.com/enncy/qba-js/blob/0785d60/src/interface.ts#L10)
+
 ___
 
 ### score
@@ -28,6 +32,10 @@ ___
 
 题目分数
 
+#### Defined in
+
+[interface.ts:8](https://github.com/enncy/qba-js/blob/0785d60/src/interface.ts#L8)
+
 ___
 
 ### type
@@ -35,3 +43,7 @@ ___
 • `Optional` **type**: `string`
 
 题目类型
+
+#### Defined in
+
+[interface.ts:6](https://github.com/enncy/qba-js/blob/0785d60/src/interface.ts#L6)

@@ -19,6 +19,10 @@
 
 处理过的题目
 
+#### Defined in
+
+[interface.ts:18](https://github.com/enncy/qba-js/blob/0785d60/src/interface.ts#L18)
+
 ___
 
 ### hit\_regexp
@@ -26,3 +30,7 @@ ___
 • **hit\_regexp**: `RegExp`
 
 命中的正则表达式
+
+#### Defined in
+
+[interface.ts:20](https://github.com/enncy/qba-js/blob/0785d60/src/interface.ts#L20)
