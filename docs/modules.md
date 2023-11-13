@@ -45,7 +45,7 @@
 
 #### Defined in
 
-[index.ts:271](https://github.com/enncy/qba-js/blob/0785d60/src/index.ts#L271)
+[index.ts:271](https://github.com/enncy/qba-js/blob/1aeebca/src/index.ts#L271)
 
 ## Variables
 
@@ -57,7 +57,7 @@ CX试卷处理器
 
 #### Defined in
 
-[handlers/cx.ts:6](https://github.com/enncy/qba-js/blob/0785d60/src/handlers/cx.ts#L6)
+[handlers/cx.ts:6](https://github.com/enncy/qba-js/blob/1aeebca/src/handlers/cx.ts#L6)
 
 ___
 
@@ -69,4 +69,4 @@ ___
 
 #### Defined in
 
-[regexp.ts:6](https://github.com/enncy/qba-js/blob/0785d60/src/regexp.ts#L6)
+[regexp.ts:6](https://github.com/enncy/qba-js/blob/1aeebca/src/regexp.ts#L6)
