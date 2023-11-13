@@ -276,17 +276,17 @@ export function parse(
 	content: string,
 	options?: {
 		/** 处理器 */
-		handler?: Handler[];
+		handlers?: Handler[];
 	}
 ) {
 	// 前置处理器
-	for (const handler of options?.handler || []) {
+	for (const handler of options?.handlers || []) {
 		content = handler.before ? handler.before(content) : content;
 	}
 	const results = analysis(content);
 	let handledResults = handleQuestionMetadata(results);
 	// 后置处理器
-	for (const handler of options?.handler || []) {
+	for (const handler of options?.handlers || []) {
 		handledResults = handler.after ? handler.after(handledResults) : handledResults;
 	}
 	return handledResults;
