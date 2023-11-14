@@ -374,8 +374,8 @@ export function writeToFile(
 		const data = results.map((r) => ({
 			题目: r.metadata?.handled_title,
 			类型: r.metadata?.type,
-			选项: r.options.join(options?.optionSplit || '\n'),
-			答案: r.answers.join(options?.answerSplit || '\n')
+			选项: r.options.join(options?.optionSplit ?? '\n'),
+			答案: r.answers.join(options?.answerSplit ?? '')
 		}));
 		const sheet = utils.json_to_sheet(data);
 		const workbook = utils.book_new();
