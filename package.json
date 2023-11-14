@@ -12,7 +12,8 @@
 		"test": "tests"
 	},
 	"scripts": {
-		"build": "pnpm format && tsc && vite build && npm run  build:docs",
+		"build": "pnpm format && tsc && vite build && npm run build:docs",
+		"push:docs": "git add ./docs && git commit -m 'update docs' && git push origin main",
 		"lint": "pnpm format && eslint  ./packages --ext .ts,.tsx,.js,.jsx --fix",
 		"format": "prettier -c ./.prettierrc.json  **/*.ts  **/*.js  --write",
 		"build:docs": "typedoc src/export.ts"
