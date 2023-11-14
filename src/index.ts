@@ -274,13 +274,34 @@ export function parse(
 	options?: {
 		/**
 		 * 处理器
-		 * @see {Handler}
 		 */
 		handlers?: Handler[];
 		/**
 		 * 题目信息解析组
+		 * 可以自定义题目信息解析组
 		 *
-		 * @default {@link default_title_metadata_regexp_group}
+		 * @example
+		 * 如果题目为以下的格式
+		 * ```
+		 * 1. xxxxx [多选题]
+		 * ```
+		 * 则需要自定义为：
+		 * ```js
+		 * parse(`1. xxxxx [多选题]...`,{
+		 *    title_metadata_regexp_group:[
+		 *		   {
+		 *		   	   regexp: /(\[..题\])$/,
+		 *		   	   groups: [['type', 1]]
+		 *		   },
+		 *		   {
+		 *		   	   regexp: /^(\d+)\./,
+		 *		   	   groups: [['index', 1]]
+		 *		   }
+		 *    ]
+		 * })
+		 * ```
+		 *
+		 * @default default_title_metadata_regexp_group
 		 */
 		title_metadata_regexp_group?: QuestionMetadataRegexpGroup[];
 	}

@@ -70,6 +70,6 @@ export interface Handler {
 	 *
 	 * @param content 题库文本
 	 */
-	before(content: string): string;
-	after(results: AnalysisResultWthMetadata[]): AnalysisResultWthMetadata[];
+	before?: (content: string) => string;
+	after?: (results: AnalysisResultWthMetadata[]) => AnalysisResultWthMetadata[];
 }
