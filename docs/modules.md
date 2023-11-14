@@ -47,7 +47,7 @@
 
 #### Defined in
 
-[index.ts:272](https://github.com/enncy/qba-js/blob/13b8dff/src/index.ts#L272)
+[index.ts:272](https://github.com/enncy/qba-js/blob/57e9397/src/index.ts#L272)
 
 ___
 
@@ -65,7 +65,7 @@ ___
 | `pathOrName` | `string` | 文件路径或者文件名 |
 | `type` | ``"json"`` \| ``"xlsx"`` \| ``"txt"`` \| ``"markdown"`` | 文件类型 |
 | `options?` | `Object` | 选项 |
-| `options.answerSplit?` | `string` | 答案分隔符，当 type 为 xlsx 时有效 **`Default`** ```ts '\n' ``` |
+| `options.answerSplit?` | `string` | 答案分隔符，当 type 为 xlsx 时有效 **`Default`** ```ts '' ``` |
 | `options.optionSplit?` | `string` | 选项分隔符，当 type 为 xlsx 时有效 **`Default`** ```ts '\n' ``` |
 
 #### Returns
@@ -84,7 +84,7 @@ qba.writeToFile(results,'./xxx/result.xlsx','xlsx')
 
 #### Defined in
 
-[index.ts:342](https://github.com/enncy/qba-js/blob/13b8dff/src/index.ts#L342)
+[index.ts:342](https://github.com/enncy/qba-js/blob/57e9397/src/index.ts#L342)
 
 ## Variables
 
@@ -104,7 +104,7 @@ answers:["选项1内容","选项2内容"]
 
 #### Defined in
 
-[handlers/common.ts:14](https://github.com/enncy/qba-js/blob/13b8dff/src/handlers/common.ts#L14)
+[handlers/common.ts:14](https://github.com/enncy/qba-js/blob/57e9397/src/handlers/common.ts#L14)
 
 ___
 
@@ -137,7 +137,7 @@ xxxxx
 
 #### Defined in
 
-[handlers/my.answer.handler.ts:28](https://github.com/enncy/qba-js/blob/13b8dff/src/handlers/my.answer.handler.ts#L28)
+[handlers/my.answer.handler.ts:28](https://github.com/enncy/qba-js/blob/57e9397/src/handlers/my.answer.handler.ts#L28)
 
 ___
 
@@ -149,4 +149,4 @@ ___
 
 #### Defined in
 
-[regexp.ts:6](https://github.com/enncy/qba-js/blob/13b8dff/src/regexp.ts#L6)
+[regexp.ts:6](https://github.com/enncy/qba-js/blob/57e9397/src/regexp.ts#L6)
