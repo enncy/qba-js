@@ -173,6 +173,9 @@
       if (getOption("option-AnswersChangeToOptionContentHandler")) {
         handlers.push(qba.AnswersChangeToOptionContentHandler);
       }
+      if (getOption("option-MyAnswerHandler")) {
+        handlers.push(qba.MyAnswerHandler);
+      }
       qba.writeToFile(
         qba.parse(content, {
           handlers: handlers,
