@@ -17,6 +17,7 @@
       textarea {
         border-radius: 4px;
         font-size: 18px;
+        padding: 12px 2px 12px 8px;
       }
 
       .opt {
@@ -48,12 +49,31 @@
         background-color: #303030;
         color: #b8b8b8;
       }
+
+      #qba-area {
+        width: 80%;
+        margin: auto;
+        height: 80%;
+        padding-top: 12px;
+      }
+
+      @media screen and (max-width: 768px) {
+        textarea {
+          font-size: 16px;
+          padding: 12px 2px 12px 4px;
+        }
+        #qba-area {
+          width: 95%;
+          height: 100%;
+          padding-top: 0px;
+        }
+      }
     </style>
     <script src="https://cdn.jsdelivr.net/npm/qba-js@latest/dist/index.min.js"></script>
   </head>
   <body>
     <div id="container">
-      <div style="width: 80%; margin: auto; height: 80%; padding-top: 12px">
+      <div id="qba-area">
         <a
           style="font-size: 32px; color: inherit"
           href="https://github.com/enncy/qba-js"
