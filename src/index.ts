@@ -11,7 +11,7 @@ import { utils, writeFile } from 'xlsx';
 
 const STANDARD_ANSWER_START = ['答案', '正确答案', '标准答案', '答案解析'];
 const MY_ANSWER_START = ['我的答案'];
-const TITLE_START_REGEXP = /^[0-9]{1,3}[:：、. \n]/;
+const TITLE_START_REGEXP = /^\d{1,5}[:：、. \n]/;
 const ANSWER_AREA_REGEXP = /([(（[{【)]\s*)([A-J]+)(\s*[】}\]）)])/;
 const ONE_LINE_OPTIONS = /[A-J].{1,}?(?:[ \n])/g;
 
