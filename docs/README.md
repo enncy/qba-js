@@ -17,16 +17,6 @@ const content = `...题库文本...`;
 console.log(qba.parse(content));
 ```
 
-## 对于特定平台的试卷详情页面解析
-
-**cx**
-
-```js
-const qba = require('qba-js');
-const content = `...题库文本...`;
-console.log(qba.parse(content, { handlers: [qba.CXHandler] }));
-```
-
 ## API
 
 [https://github.com/enncy/qba-js/blob/main/docs/modules.md](https://github.com/enncy/qba-js/blob/main/docs/modules.md)

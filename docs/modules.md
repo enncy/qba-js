@@ -21,7 +21,7 @@
 ### Variables
 
 - [AnswersChangeToOptionContentHandler](modules.md#answerschangetooptioncontenthandler)
-- [CXHandler](modules.md#cxhandler)
+- [MyAnswerHandler](modules.md#myanswerhandler)
 - [default\_title\_metadata\_regexp\_group](modules.md#default_title_metadata_regexp_group)
 
 ## Functions
@@ -47,7 +47,7 @@
 
 #### Defined in
 
-[index.ts:272](https://github.com/enncy/qba-js/blob/a359c40/src/index.ts#L272)
+[index.ts:272](https://github.com/enncy/qba-js/blob/cefa56e/src/index.ts#L272)
 
 ___
 
@@ -84,7 +84,7 @@ qba.writeToFile(results,'./xxx/result.xlsx','xlsx')
 
 #### Defined in
 
-[index.ts:342](https://github.com/enncy/qba-js/blob/a359c40/src/index.ts#L342)
+[index.ts:342](https://github.com/enncy/qba-js/blob/cefa56e/src/index.ts#L342)
 
 ## Variables
 
@@ -104,19 +104,40 @@ answers:["选项1内容","选项2内容"]
 
 #### Defined in
 
-[handlers/common.ts:14](https://github.com/enncy/qba-js/blob/a359c40/src/handlers/common.ts#L14)
+[handlers/common.ts:14](https://github.com/enncy/qba-js/blob/cefa56e/src/handlers/common.ts#L14)
 
 ___
 
-### CXHandler
+### MyAnswerHandler
 
-• `Const` **CXHandler**: [`Handler`](interfaces/Handler.md)
+• `Const` **MyAnswerHandler**: [`Handler`](interfaces/Handler.md)
 
-CX试卷处理器
+处理带有 `我的答案` 多余字段的试卷
+
+**`Example`**
+
+以下内容会被处理
+
+```txt
+n. 题目区域
+我的答案：
+xxxxx
+正确答案：
+xxxxx
+
+```
+
+转换成
+
+```txt
+n. 题目区域
+正确答案：
+xxxxx
+```
 
 #### Defined in
 
-[handlers/cx.ts:6](https://github.com/enncy/qba-js/blob/a359c40/src/handlers/cx.ts#L6)
+[handlers/my.answer.handler.ts:28](https://github.com/enncy/qba-js/blob/cefa56e/src/handlers/my.answer.handler.ts#L28)
 
 ___
 
@@ -128,4 +149,4 @@ ___
 
 #### Defined in
 
-[regexp.ts:6](https://github.com/enncy/qba-js/blob/a359c40/src/regexp.ts#L6)
+[regexp.ts:6](https://github.com/enncy/qba-js/blob/cefa56e/src/regexp.ts#L6)
