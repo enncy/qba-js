@@ -177,8 +177,13 @@
         qba.parse(content, {
           handlers: handlers,
         }),
-        "result.xlsx",
-        outputType,
+        outputType === "xlsx"
+          ? "result.xlsx"
+          : outputType === "markdown"
+          ? "result.md"
+          : outputType === "json"
+          ? "result.json"
+          : 'result.txt',
         {
           answerSplit: getArgument("arg-answerSplit"),
           optionSplit: getArgument("arg-optionSplit"),
