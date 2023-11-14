@@ -348,7 +348,7 @@ export function writeToFile(
 		 * 选项分隔符，当 type 为 xlsx 时有效
 		 * @default '\n'
 		 */
-		optionsSplit?: string;
+		optionSplit?: string;
 		/**
 		 * 答案分隔符，当 type 为 xlsx 时有效
 		 * @default '\n'
@@ -374,7 +374,7 @@ export function writeToFile(
 		const data = results.map((r) => ({
 			题目: r.metadata?.handled_title,
 			类型: r.metadata?.type,
-			选项: r.options.join(options?.optionsSplit || '\n'),
+			选项: r.options.join(options?.optionSplit || '\n'),
 			答案: r.answers.join(options?.answerSplit || '\n')
 		}));
 		const sheet = utils.json_to_sheet(data);
