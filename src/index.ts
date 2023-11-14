@@ -351,7 +351,7 @@ export function writeToFile(
 		optionSplit?: string;
 		/**
 		 * 答案分隔符，当 type 为 xlsx 时有效
-		 * @default '\n'
+		 * @default ''
 		 */
 		answerSplit?: string;
 	}
