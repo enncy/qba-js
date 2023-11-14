@@ -1,9 +1,31 @@
 import { AnalysisResultWthMetadata, Handler } from '../interface';
 
 /**
- * CX试卷处理器
+ * 处理带有 `我的答案` 多余字段的试卷
+ *
+ * @example
+ *
+ * 以下内容会被处理
+ *
+ * ```txt
+ * n. 题目区域
+ * 我的答案：
+ * xxxxx
+ * 正确答案：
+ * xxxxx
+ *
+ * ```
+ *
+ * 转换成
+ *
+ * ```txt
+ * n. 题目区域
+ * 正确答案：
+ * xxxxx
+ * ```
+ *
  */
-export const CXHandler: Handler = {
+export const MyAnswerHandler: Handler = {
 	before(content: string): string {
 		return content.replace(/我的答案[\s\S]+?(正确答案|标准答案|答案解析)/g, '$1');
 	},
