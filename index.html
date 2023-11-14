@@ -1,0 +1,199 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>qba-js 题库在线解析</title>
+
+    <style>
+      body,
+      html,
+      #container {
+        height: 100%;
+        margin: 0px;
+        padding: 0px;
+      }
+
+      textarea {
+        border-radius: 4px;
+        font-size: 18px;
+      }
+
+      .opt {
+        margin-right: 8px;
+        border: 1px solid #8d8d8d;
+        border-radius: 4px;
+        font-size: 14px;
+      }
+
+      .arg {
+        margin-right: 24px;
+      }
+
+      .group {
+        width: 64px;
+        display: inline-block;
+        font-weight: bold;
+      }
+
+      .opt.active {
+        border: 1px solid #2196f3;
+      }
+
+      .dark-theme {
+        background-color: #1d1d1d;
+        color: #b8b8b8;
+      }
+      .dark-theme textarea {
+        background-color: #303030;
+        color: #b8b8b8;
+      }
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/qba-js@latest/dist/index.min.js"></script>
+  </head>
+  <body>
+    <div id="container">
+      <div style="width: 80%; margin: auto; height: 80%; padding-top: 12px">
+        <a
+          style="font-size: 32px; color: inherit"
+          href="https://github.com/enncy/qba-js"
+        >
+          qba-js
+        </a>
+        <div style="font-size: 16px; margin-top: 4px">
+          题库在线解析，题库文本在线转换成表格，可将题库文本复制粘贴到下方区域，即可在线解析。
+        </div>
+
+        <div style="margin: 12px 0px; font-size: 15px">
+          <div>
+            <div class="group">选项：</div>
+            <span
+              class="opt"
+              title="将 “我的答案” 多余部分进行删除"
+              onclick="onOptionClick(this)"
+            >
+              <input
+                type="checkbox"
+                onchange="onOptionChange(this)"
+              />-处理“我的答案”
+            </span>
+            <span
+              class="opt"
+              title="将 ABCD 纯英文答案转换成对应的选项内容，只有在导出格式为 “表格” 时才有效"
+              onclick="onOptionClick(this)"
+            >
+              <input
+                id="option-AnswersChangeToOptionContentHandler"
+                type="checkbox"
+                onchange="onOptionChange(this)"
+              />-将答案转换成选项内容
+            </span>
+          </div>
+        </div>
+
+        <div style="margin: 12px 0px; font-size: 15px">
+          <div>
+            <div class="group">参数：</div>
+            <span class="arg">
+              选项分隔符：<input type="text" id="arg-optionSplit" value="\n" />
+            </span>
+            <span class="arg">
+              答案分隔符：<input type="text" id="arg-answerSplit" value="\n" />
+            </span>
+
+            <span class="arg">
+              导出格式：
+              <select id="outputType">
+                <option value="xlsx">表格</option>
+                <option value="json">JSON</option>
+                <option value="markdown">markdown</option>
+              </select>
+            </span>
+          </div>
+        </div>
+
+        <div style="margin-bottom: 12px">
+          <button onclick="onParse()">点击开始解析</button>
+        </div>
+
+        <div style="height: 100%">
+          <textarea
+            oninput="onContentChange(this)"
+            id="content"
+            style="width: 100%; height: 100%"
+          ></textarea>
+        </div>
+      </div>
+    </div>
+  </body>
+
+  <script>
+    console.log(qba);
+
+    function getOption(id) {
+      return document.getElementById(id).checked;
+    }
+    function getArgument(id) {
+      return document.getElementById(id).value;
+    }
+
+    function onParse(e) {
+      const content = document.getElementById("content").value;
+      const outputType = document.getElementById("outputType").value;
+      // 选项
+      const handlers = [];
+      if (getOption("option-AnswersChangeToOptionContentHandler")) {
+        handlers.push(qba.AnswersChangeToOptionContentHandler);
+      }
+      qba.writeToFile(
+        qba.parse(content, {
+          handlers: handlers,
+        }),
+        "result.xlsx",
+        outputType,
+        {
+          answerSplit: getArgument("arg-answerSplit"),
+          optionSplit: getArgument("arg-optionSplit"),
+        }
+      );
+    }
+
+    function onContentChange(e) {
+      const content = e.value;
+      const outputType = document.getElementById("outputType").value;
+      localStorage.setItem("content", content);
+    }
+
+    function onOptionChange(el) {
+      el.parentNode.classList.toggle("active");
+    }
+
+    function onOptionClick(el) {
+      const checkbox = el.querySelector("input");
+      checkbox.checked = !checkbox.checked;
+      onOptionChange(checkbox);
+    }
+
+    window.onload = function () {
+      const content = localStorage.getItem("content");
+      if (content) {
+        document.getElementById("content").value = content;
+      }
+    };
+
+    /**
+     * 检测系统是否开启了暗黑模式
+     */
+    const MediaQueryList = window.matchMedia("(prefers-color-scheme: dark)");
+
+    if (MediaQueryList.matches) {
+      document.body.classList.add("dark-theme");
+    }
+
+    MediaQueryList.addListener((e) =>
+      e.matches
+        ? document.body.classList.add("dark-theme")
+        : document.body.classList.remove("dark-theme")
+    );
+  </script>
+</html>
