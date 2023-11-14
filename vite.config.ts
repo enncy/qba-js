@@ -8,7 +8,7 @@ export default defineConfig({
 		/** 清空输出路径 */
 		emptyOutDir: false,
 		/** 是否压缩代码 */
-		minify: false,
+		minify: true,
 		/** 打包库， 全局名字为 OCS */
 		lib: {
 			entry: './src/export.ts',
