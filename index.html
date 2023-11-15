@@ -212,6 +212,9 @@
       if (getOption("option-MyAnswerHandler")) {
         handlers.push(qba.MyAnswerHandler);
       }
+
+      console.log({ content, outputType, filename, replaceGroups, handlers });
+      
       qba.writeToFile(
         qba.parse(content, {
           handlers: handlers,

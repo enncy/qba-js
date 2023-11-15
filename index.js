@@ -57,8 +57,7 @@ export class ReplaceGroup extends LitElement {
 
     changeArg = (e) => {
         const { id, value } = e.target;
-        const [_, arg] = id.split('-');
-        console.log(arg);
+        const [_, arg] = id.split('-'); 
         this[`arg${arg}`] = value;
         localStorage.setItem("rg-" + this.id, JSON.stringify({
             arg1: this.arg1,
