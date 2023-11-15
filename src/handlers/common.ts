@@ -31,3 +31,21 @@ export const AnswersChangeToOptionContentHandler: Handler = {
 		});
 	}
 };
+
+/**
+ * 当题目序号和题目类型，题目题干不在同一行时，处理成同一行方便解析。
+ * ```
+ * 1
+ * 【单选题】
+ * xxxx题目xxxx
+ * ```
+ * 转换成
+ * ```
+ * 1. 【单选题】xxxx题目xxxx
+ * ```
+ */
+export const MultipleLineMetadataHandler: Handler = {
+	before(content) {
+		return content.replace(/(\d+).+?\n\s*[[【(（{](.+?题)[})）】\]]]\s*\n/g, '$1. 【$2】');
+	}
+};
