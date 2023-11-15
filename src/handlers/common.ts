@@ -46,6 +46,6 @@ export const AnswersChangeToOptionContentHandler: Handler = {
  */
 export const MultipleLineMetadataHandler: Handler = {
 	before(content) {
-		return content.replace(/(\d+).+?\n\s*[[【(（{](.+?题)[})）】\]]]\s*\n/g, '$1. 【$2】');
+		return content.replace(/(\d+).*?\n\s*[\[【(（{](.+?题)[})）】\]].*?\n/g, '$1. 【$2】');
 	}
 };
