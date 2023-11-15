@@ -26,10 +26,12 @@ export class ReplaceGroup extends LitElement {
         arg1: { type: String },
         arg2: { type: String },
         arg3: { type: String },
+        id: { type: Number },
     };
 
     constructor() {
         super();
+        this.id = this.id ?? Date.now();
         this.arg1 = '';
         this.arg2 = 'g';
         this.arg3 = '';
@@ -58,9 +60,15 @@ export class ReplaceGroup extends LitElement {
         const [_, arg] = id.split('-');
         console.log(arg);
         this[`arg${arg}`] = value;
+        localStorage.setItem("rg-" + this.id, JSON.stringify({
+            arg1: this.arg1,
+            arg2: this.arg2,
+            arg3: this.arg3,
+        }));
     }
 
-    removeEl = () => {
+    removeEl = () => { 
+        localStorage.removeItem("rg-" + this.id);
         this.remove();
     }
 }

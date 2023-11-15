@@ -68,7 +68,7 @@
         }
       }
     </style>
-    <script src="https://cdn.jsdelivr.net/npm/qba-js@latest/dist/index.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/qba-js@0.0.13/dist/index.js"></script>
     <script type="module">
       import "./index.js";
     </script>
@@ -122,23 +122,36 @@
                 type="text"
                 id="arg-optionSplit"
                 placeholder="默认为换行符：\n"
+                oninput="onChangeSetting(this)"
               />
             </span>
             <span class="arg">
-              答案分隔符：<input
+              答案分隔符：
+              <input
                 type="text"
                 id="arg-answerSplit"
                 placeholder="默认为空"
+                oninput="onChangeSetting(this)"
               />
             </span>
 
             <span class="arg">
               导出格式：
-              <select id="outputType">
+              <select id="arg-outputType" oninput="onChangeSetting(this)">
                 <option value="xlsx">表格</option>
                 <option value="json">JSON</option>
                 <option value="markdown">markdown</option>
               </select>
+            </span>
+
+            <span class="arg">
+              导出文件名：
+              <input
+                type="text"
+                id="arg-outputFileName"
+                placeholder="result"
+                oninput="onChangeSetting(this)"
+              />
             </span>
           </div>
         </div>
@@ -182,7 +195,8 @@
 
     function onParse(e) {
       let content = document.getElementById("content").value;
-      const outputType = document.getElementById("outputType").value;
+      const outputType = getArgument("arg-outputType");
+      const filename = getArgument("arg-outputFileName") || "result";
       const replaceGroups = document.querySelectorAll("el-replace-group");
       for (const rg of replaceGroups) {
         content = String(content).replace(
@@ -203,12 +217,12 @@
           handlers: handlers,
         }),
         outputType === "xlsx"
-          ? "result.xlsx"
+          ? filename + ".xlsx"
           : outputType === "markdown"
-          ? "result.md"
+          ? filename + ".md"
           : outputType === "json"
-          ? "result.json"
-          : "result.txt",
+          ? filename + ".json"
+          : filename + ".txt",
         outputType,
         {
           answerSplit: getArgument("arg-answerSplit"),
@@ -219,7 +233,6 @@
 
     function onContentChange(e) {
       const content = e.value;
-      const outputType = document.getElementById("outputType").value;
       localStorage.setItem("content", content);
     }
 
@@ -233,12 +246,44 @@
       onOptionChange(checkbox);
     }
 
+    function onChangeSetting(e) {
+      localStorage.setItem(e.id, e.value);
+    }
+
     window.onload = function () {
-      const content = localStorage.getItem("content");
-      if (content) {
-        document.getElementById("content").value = content;
+      // 还原替换组
+      for (const key in localStorage) {
+        if (Object.hasOwnProperty.call(localStorage, key)) {
+          if (key.startsWith("rg-")) {
+            const rg = document.createElement("el-replace-group");
+            const { arg1, arg2, arg3 } = JSON.parse(localStorage.getItem(key));
+            rg.id = key.replace("rg-", "");
+            rg.arg1 = arg1;
+            rg.arg2 = arg2;
+            rg.arg3 = arg3;
+            document.querySelector("#replace-container").append(rg);
+          }
+        }
       }
+
+      // 还原编辑内容
+      restoreSetting("content");
+      // 还原选项分隔符
+      restoreSetting("arg-optionSplit");
+      // 还原答案分隔符
+      restoreSetting("arg-answerSplit");
+      // 还原导出格式
+      restoreSetting("arg-outputType");
+      // 还原文件名
+      restoreSetting("arg-outputFileName");
     };
+    // 还原设置
+    function restoreSetting(id) {
+      const val = localStorage.getItem(id);
+      if (val) {
+        document.getElementById(id).value = val;
+      }
+    }
 
     /**
      * 检测系统是否开启了暗黑模式
