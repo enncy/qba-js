@@ -47,7 +47,7 @@
 
 #### Defined in
 
-[index.ts:285](https://github.com/enncy/qba-js/blob/ba24dcc/src/index.ts#L285)
+[index.ts:289](https://github.com/enncy/qba-js/blob/9d5f4c6/src/index.ts#L289)
 
 ___
 
@@ -84,7 +84,7 @@ qba.writeToFile(results,'./xxx/result.xlsx','xlsx')
 
 #### Defined in
 
-[index.ts:355](https://github.com/enncy/qba-js/blob/ba24dcc/src/index.ts#L355)
+[index.ts:359](https://github.com/enncy/qba-js/blob/9d5f4c6/src/index.ts#L359)
 
 ## Variables
 
@@ -104,7 +104,7 @@ answers:["选项1内容","选项2内容"]
 
 #### Defined in
 
-[handlers/common.ts:14](https://github.com/enncy/qba-js/blob/ba24dcc/src/handlers/common.ts#L14)
+[handlers/common.ts:14](https://github.com/enncy/qba-js/blob/9d5f4c6/src/handlers/common.ts#L14)
 
 ___
 
@@ -137,7 +137,7 @@ xxxxx
 
 #### Defined in
 
-[handlers/my.answer.handler.ts:28](https://github.com/enncy/qba-js/blob/ba24dcc/src/handlers/my.answer.handler.ts#L28)
+[handlers/my.answer.handler.ts:28](https://github.com/enncy/qba-js/blob/9d5f4c6/src/handlers/my.answer.handler.ts#L28)
 
 ___
 
@@ -149,4 +149,4 @@ ___
 
 #### Defined in
 
-[regexp.ts:6](https://github.com/enncy/qba-js/blob/ba24dcc/src/regexp.ts#L6)
+[regexp.ts:6](https://github.com/enncy/qba-js/blob/9d5f4c6/src/regexp.ts#L6)
