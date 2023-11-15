@@ -9,7 +9,6 @@
       body,
       html,
       #container {
-        height: 100%;
         margin: 0px;
         padding: 0px;
       }
@@ -70,6 +69,9 @@
       }
     </style>
     <script src="https://cdn.jsdelivr.net/npm/qba-js@latest/dist/index.js"></script>
+    <script type="module">
+      import "./index.js";
+    </script>
   </head>
   <body>
     <div id="container">
@@ -141,6 +143,14 @@
           </div>
         </div>
 
+        <div style="margin: 12px 0px; font-size: 15px">
+          <div>
+            <div class="group">替换：</div>
+            <span id="replace-container"> </span>
+            <span> <button onclick="onAddReplaceGroup()">+</button> </span>
+          </div>
+        </div>
+
         <div style="margin-bottom: 12px">
           <button onclick="onParse()">点击开始解析</button>
         </div>
@@ -149,7 +159,7 @@
           <textarea
             oninput="onContentChange(this)"
             id="content"
-            style="width: 100%; height: 100%"
+            style="width: 100%; min-height: 70vh; min-width: 50vw"
           ></textarea>
         </div>
       </div>
@@ -157,8 +167,6 @@
   </body>
 
   <script>
-    console.log(qba);
-
     function getOption(id) {
       return document.getElementById(id).checked;
     }
@@ -166,9 +174,22 @@
       return document.getElementById(id).value;
     }
 
+    function onAddReplaceGroup() {
+      document
+        .querySelector("#replace-container")
+        .append(document.createElement("el-replace-group"));
+    }
+
     function onParse(e) {
-      const content = document.getElementById("content").value;
+      let content = document.getElementById("content").value;
       const outputType = document.getElementById("outputType").value;
+      const replaceGroups = document.querySelectorAll("el-replace-group");
+      for (const rg of replaceGroups) {
+        content = String(content).replace(
+          new RegExp(rg.arg1, rg.arg2),
+          rg.arg3
+        );
+      }
       // 选项
       const handlers = [];
       if (getOption("option-AnswersChangeToOptionContentHandler")) {
