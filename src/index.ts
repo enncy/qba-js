@@ -9,7 +9,7 @@ import {
 import { default_title_metadata_regexp_group } from './regexp';
 import { utils, writeFile } from 'xlsx';
 
-const STANDARD_ANSWER_START = ['答案', '正确答案', '标准答案', '答案解析'];
+const STANDARD_ANSWER_START = ['正确答案', '标准答案', '答案解析', '答案'];
 const MY_ANSWER_START = ['我的答案'];
 const TITLE_START_REGEXP = /^\d{1,5}[:：、. \n]/;
 const ANSWER_AREA_REGEXP = /([(（[{【)]\s*)([A-J]+)(\s*[】}\]）)])/;
@@ -135,6 +135,10 @@ export function analysis(content: string): AnalysisResult[] {
 			save = true;
 			// 因为是已经开始答案区域了，所以这一行也得加入
 			saveLines.push(line);
+			// 如果已经是最后一行了
+			if (count === lines.length - 1) {
+				saveGroup.push(saveLines);
+			}
 		} else {
 			if (save) {
 				saveLines.push(line);
@@ -201,8 +205,17 @@ export function analysis(content: string): AnalysisResult[] {
 				i++;
 			}
 
-			// 把带有标准答案的那一行给排除
-			results[count].answers = answers.filter((a) => STANDARD_ANSWER_START.some((i) => a.includes(i)) === false);
+			// 把“正确答案”字段删除，只留下答案内容
+			results[count].answers = answers
+				.map((a) => {
+					if (STANDARD_ANSWER_START.some((i) => a.includes(i))) {
+						for (const sas of STANDARD_ANSWER_START) {
+							a = a.replace(new RegExp(sas + '[:：、，。 \\n]'), '').trim();
+						}
+					}
+					return a;
+				})
+				.filter(String);
 		}
 
 		count++;
