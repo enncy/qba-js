@@ -68,7 +68,7 @@
         }
       }
     </style>
-    <script src="https://cdn.jsdelivr.net/npm/qba-js@0.0.13/dist/index.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/qba-js@0.0.15/dist/index.js"></script>
     <script type="module">
       import "./index.js";
     </script>
@@ -89,6 +89,19 @@
         <div style="margin: 12px 0px; font-size: 15px">
           <div>
             <div class="group">选项：</div>
+
+            <span
+              class="opt"
+              title="当题目序号和题目类型，题目题干不在同一行时，处理成同一行方便解析。"
+              onclick="onOptionClick(this)"
+            >
+              <input
+                type="checkbox"
+                id="option-MultipleLineMetadataHandler"
+                onchange="onOptionChange(this)"
+                checked
+              />-处理多行题目信息
+            </span>
             <span
               class="opt"
               title="将 “我的答案” 多余部分进行删除"
@@ -98,6 +111,7 @@
                 type="checkbox"
                 id="option-MyAnswerHandler"
                 onchange="onOptionChange(this)"
+                checked
               />-处理“我的答案”
             </span>
             <span
@@ -109,6 +123,7 @@
                 id="option-AnswersChangeToOptionContentHandler"
                 type="checkbox"
                 onchange="onOptionChange(this)"
+                checked
               />-将答案转换成选项内容
             </span>
           </div>
@@ -130,7 +145,7 @@
               <input
                 type="text"
                 id="arg-answerSplit"
-                placeholder="默认为空"
+                placeholder="默认为“ # ”"
                 oninput="onChangeSetting(this)"
               />
             </span>
@@ -212,9 +227,12 @@
       if (getOption("option-MyAnswerHandler")) {
         handlers.push(qba.MyAnswerHandler);
       }
+      if (getOption("option-MultipleLineMetadataHandler")) {
+        handlers.push(qba.MultipleLineMetadataHandler);
+      }
 
       console.log({ content, outputType, filename, replaceGroups, handlers });
-      
+
       qba.writeToFile(
         qba.parse(content, {
           handlers: handlers,
@@ -228,7 +246,7 @@
           : filename + ".txt",
         outputType,
         {
-          answerSplit: getArgument("arg-answerSplit"),
+          answerSplit: getArgument("arg-answerSplit") ?? ' # ',
           optionSplit: getArgument("arg-optionSplit"),
         }
       );

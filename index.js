@@ -13,7 +13,7 @@ export class ReplaceGroup extends LitElement {
         }
  
         [id*="arg-1"] {
-            width: 84px;
+            width: 124px;
         }
         [id*="arg-2"] {
             width: 32px;
