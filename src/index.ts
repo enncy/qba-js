@@ -164,6 +164,8 @@ export function analysis(content: string): AnalysisResult[] {
 		count++;
 	}
 
+	startSaveGroup(0);
+
 	count = 0;
 
 	// 如果题目提取失败，则证明答案在答案区域组中
@@ -173,7 +175,8 @@ export function analysis(content: string): AnalysisResult[] {
 			let i = 0;
 			let answerStart = false;
 			let answers: string[] = [];
-			const answerArea = saveGroup[count];
+			const answerArea = saveGroup.shift();
+
 			// 下一个循环
 			if (!answerArea) {
 				count++;
@@ -206,7 +209,7 @@ export function analysis(content: string): AnalysisResult[] {
 			}
 
 			// 把“正确答案”字段删除，只留下答案内容
-			results[count].answers = answers
+			result.answers = answers
 				.map((a) => {
 					if (STANDARD_ANSWER_START.some((i) => a.includes(i))) {
 						for (const sas of STANDARD_ANSWER_START) {
@@ -216,6 +219,7 @@ export function analysis(content: string): AnalysisResult[] {
 					return a;
 				})
 				.filter(String);
+			result.complete = !!result.answers.length;
 		}
 
 		count++;
