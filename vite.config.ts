@@ -6,15 +6,15 @@ export default defineConfig({
 		/** @ts-ignore 输出路径 */
 		outDir: './dist/',
 		/** 清空输出路径 */
-		emptyOutDir: false,
+		emptyOutDir: true,
 		/** 是否压缩代码 */
-		minify: true,
-		/** 打包库， 全局名字为 OCS */
+		minify: false,
+		/** 打包库， 全局名字为 qba */
 		lib: {
 			entry: './src/export.ts',
 			name: 'qba',
-			fileName: () => 'index.js',
-			formats: ['umd']
+			fileName: (format) => 'index' + (format === 'umd' ? '.js' : '.' + format + '.js'),
+			formats: ['umd', 'es']
 		}
 	},
 	plugins: []
