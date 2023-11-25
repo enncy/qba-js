@@ -290,7 +290,7 @@ export function parse(
 	content: string,
 	options?: {
 		/**
-		 * 处理器
+		 * 处理器 - 可用的默认处理器 : [qba.handlers](modules/handlers.md)
 		 */
 		handlers?: Handler[];
 		/**

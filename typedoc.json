@@ -5,5 +5,5 @@
 	"categoryOrder": ["Functions"],
 	"entryPointStrategy": "expand",
 	"plugin": ["typedoc-plugin-markdown"],
-	"groupOrder": ["Functions"]
+	"groupOrder": ["Functions", "Namespaces", "Variables"]
 }
