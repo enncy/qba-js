@@ -49,7 +49,7 @@
 
 #### Defined in
 
-[index.ts:289](https://github.com/enncy/qba-js/blob/a1f2be7/src/index.ts#L289)
+[index.ts:289](https://github.com/enncy/qba-js/blob/ba98394/src/index.ts#L289)
 
 ___
 
@@ -86,7 +86,7 @@ qba.writeToFile(results,'./xxx/result.xlsx','xlsx')
 
 #### Defined in
 
-[index.ts:359](https://github.com/enncy/qba-js/blob/a1f2be7/src/index.ts#L359)
+[index.ts:359](https://github.com/enncy/qba-js/blob/ba98394/src/index.ts#L359)
 
 ## Variables
 
@@ -98,4 +98,4 @@ qba.writeToFile(results,'./xxx/result.xlsx','xlsx')
 
 #### Defined in
 
-[regexp.ts:6](https://github.com/enncy/qba-js/blob/a1f2be7/src/regexp.ts#L6)
+[regexp.ts:6](https://github.com/enncy/qba-js/blob/ba98394/src/regexp.ts#L6)

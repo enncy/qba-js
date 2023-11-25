@@ -28,7 +28,7 @@ answers:["选项1内容","选项2内容"]
 
 #### Defined in
 
-[handlers/common.ts:14](https://github.com/enncy/qba-js/blob/a1f2be7/src/handlers/common.ts#L14)
+[handlers/common.ts:14](https://github.com/enncy/qba-js/blob/ba98394/src/handlers/common.ts#L14)
 
 ___
 
@@ -49,7 +49,7 @@ xxxx题目xxxx
 
 #### Defined in
 
-[handlers/common.ts:47](https://github.com/enncy/qba-js/blob/a1f2be7/src/handlers/common.ts#L47)
+[handlers/common.ts:47](https://github.com/enncy/qba-js/blob/ba98394/src/handlers/common.ts#L47)
 
 ___
 
@@ -82,4 +82,4 @@ xxxxx
 
 #### Defined in
 
-[handlers/my.answer.handler.ts:28](https://github.com/enncy/qba-js/blob/a1f2be7/src/handlers/my.answer.handler.ts#L28)
+[handlers/my.answer.handler.ts:28](https://github.com/enncy/qba-js/blob/ba98394/src/handlers/my.answer.handler.ts#L28)
