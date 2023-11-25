@@ -46,7 +46,6 @@ import qba from 'qba-js';
 ## 使用示例
 
 ```js
-const qba = require('qba-js');
 const content = `...题库文本...`;
 const results = qba.parse(content);
 console.log(results);
@@ -55,7 +54,6 @@ console.log(results);
 使用答案转换成内容处理器
 
 ```js
-const qba = require('qba-js');
 const content = `...题库文本...`;
 const results = qba.parse(content, {
 	handlers: [qba.handlers.AnswersChangeToOptionContentHandler]
@@ -66,7 +64,6 @@ console.log(results);
 使用全部通用处理器
 
 ```js
-const qba = require('qba-js');
 const content = `...题库文本...`;
 const results = qba.parse(content, {
 	handlers: Object.entries(qba.handlers).map((e) => e[1])
