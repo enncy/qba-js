@@ -1,6 +1,6 @@
 {
 	"name": "qba-js",
-	"version": "0.0.16",
+	"version": "0.0.17",
 	"description": "question bank analyzer",
 	"types": "./lib/src/index.d.ts",
 	"main": "./lib/src/index.js",
