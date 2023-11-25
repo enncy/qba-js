@@ -9,6 +9,14 @@
 - [parse](modules.md#parse)
 - [writeToFile](modules.md#writetofile)
 
+### Namespaces
+
+- [handlers](modules/handlers.md)
+
+### Variables
+
+- [default\_title\_metadata\_regexp\_group](modules.md#default_title_metadata_regexp_group)
+
 ### Interfaces
 
 - [AnalysisResult](interfaces/AnalysisResult.md)
@@ -17,13 +25,6 @@
 - [Handler](interfaces/Handler.md)
 - [QuestionMetadata](interfaces/QuestionMetadata.md)
 - [QuestionMetadataRegexpGroup](interfaces/QuestionMetadataRegexpGroup.md)
-
-### Variables
-
-- [AnswersChangeToOptionContentHandler](modules.md#answerschangetooptioncontenthandler)
-- [MultipleLineMetadataHandler](modules.md#multiplelinemetadatahandler)
-- [MyAnswerHandler](modules.md#myanswerhandler)
-- [default\_title\_metadata\_regexp\_group](modules.md#default_title_metadata_regexp_group)
 
 ## Functions
 
@@ -39,7 +40,7 @@
 | :------ | :------ | :------ |
 | `content` | `string` | 题库文本 |
 | `options?` | `Object` | - |
-| `options.handlers?` | [`Handler`](interfaces/Handler.md)[] | 处理器 |
+| `options.handlers?` | [`Handler`](interfaces/Handler.md)[] | 处理器 - 可用的默认处理器 : [qba.handlers](modules/handlers.md) |
 | `options.title_metadata_regexp_group?` | [`QuestionMetadataRegexpGroup`](interfaces/QuestionMetadataRegexpGroup.md)[] | 题目信息解析组 可以自定义题目信息解析组 **`Example`** 如果题目为以下的格式 ``` 1. xxxxx [多选题] ``` 则需要自定义为： ```js parse(`1. xxxxx [多选题]...`,{ title_metadata_regexp_group:[ { regexp: /(\[..题\])$/, groups: [['type', 1]] }, { regexp: /^(\d+)\./, groups: [['index', 1]] } ] }) ``` **`Default`** ```ts default_title_metadata_regexp_group ``` |
 
 #### Returns
@@ -48,7 +49,7 @@
 
 #### Defined in
 
-[index.ts:289](https://github.com/enncy/qba-js/blob/9cb96f3/src/index.ts#L289)
+[index.ts:289](https://github.com/enncy/qba-js/blob/a1f2be7/src/index.ts#L289)
 
 ___
 
@@ -85,83 +86,9 @@ qba.writeToFile(results,'./xxx/result.xlsx','xlsx')
 
 #### Defined in
 
-[index.ts:359](https://github.com/enncy/qba-js/blob/9cb96f3/src/index.ts#L359)
+[index.ts:359](https://github.com/enncy/qba-js/blob/a1f2be7/src/index.ts#L359)
 
 ## Variables
-
-### AnswersChangeToOptionContentHandler
-
-• `Const` **AnswersChangeToOptionContentHandler**: [`Handler`](interfaces/Handler.md)
-
-答案处理器
- 将纯ABCD的答案转换为选项内容，并且把选项之前的字母去掉
-```
-answers:["A","B"]
-```
-转换成
-```
-answers:["选项1内容","选项2内容"]
-```
-
-#### Defined in
-
-[handlers/common.ts:14](https://github.com/enncy/qba-js/blob/9cb96f3/src/handlers/common.ts#L14)
-
-___
-
-### MultipleLineMetadataHandler
-
-• `Const` **MultipleLineMetadataHandler**: [`Handler`](interfaces/Handler.md)
-
-当题目序号和题目类型，题目题干不在同一行时，处理成同一行方便解析。
-```
-1
-【单选题】
-xxxx题目xxxx
-```
-转换成
-```
-1. 【单选题】xxxx题目xxxx
-```
-
-#### Defined in
-
-[handlers/common.ts:47](https://github.com/enncy/qba-js/blob/9cb96f3/src/handlers/common.ts#L47)
-
-___
-
-### MyAnswerHandler
-
-• `Const` **MyAnswerHandler**: [`Handler`](interfaces/Handler.md)
-
-处理带有 `我的答案` 多余字段的试卷
-
-**`Example`**
-
-以下内容会被处理
-
-```txt
-n. 题目区域
-我的答案：
-xxxxx
-正确答案：
-xxxxx
-
-```
-
-转换成
-
-```txt
-n. 题目区域
-正确答案：
-xxxxx
-```
-
-#### Defined in
-
-[handlers/my.answer.handler.ts:28](https://github.com/enncy/qba-js/blob/9cb96f3/src/handlers/my.answer.handler.ts#L28)
-
-___
 
 ### default\_title\_metadata\_regexp\_group
 
@@ -171,4 +98,4 @@ ___
 
 #### Defined in
 
-[regexp.ts:6](https://github.com/enncy/qba-js/blob/9cb96f3/src/regexp.ts#L6)
+[regexp.ts:6](https://github.com/enncy/qba-js/blob/a1f2be7/src/regexp.ts#L6)
