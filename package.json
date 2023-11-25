@@ -3,7 +3,7 @@
 	"version": "0.0.18",
 	"description": "question bank analyzer",
 	"types": "./lib/src/export.d.ts",
-	"main": "./lib/src/export.js",
+	"main": "./dist/index.js",
 	"files": [
 		"lib",
 		"dist"
