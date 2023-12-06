@@ -21,7 +21,7 @@
 
 #### Defined in
 
-[interface.ts:18](https://github.com/enncy/qba-js/blob/ba98394/src/interface.ts#L18)
+[interface.ts:18](https://github.com/enncy/qba-js/blob/6d322de/src/interface.ts#L18)
 
 ___
 
@@ -33,4 +33,4 @@ ___
 
 #### Defined in
 
-[interface.ts:20](https://github.com/enncy/qba-js/blob/ba98394/src/interface.ts#L20)
+[interface.ts:20](https://github.com/enncy/qba-js/blob/6d322de/src/interface.ts#L20)
