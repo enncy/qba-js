@@ -49,3 +49,12 @@ export const MultipleLineMetadataHandler: Handler = {
 		return content.replace(/(\d+).*?\n\s*[\[【(（{](.+?题)[})）】\]].*?\n/g, '$1. 【$2】');
 	}
 };
+
+/**
+ * 从 Word 文档中复制粘贴的文本中的选项可能会带有  “● A xxx” 这样的搜进格式，而圆圈就是下方的  ， 全文删除即可得到正确的选项 “A xxx”
+ */
+export const OptionsUnknownWordHandler: Handler = {
+	before(content) {
+		return content.replace(//g, '');
+	}
+};
