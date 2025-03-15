@@ -9,6 +9,7 @@
 - [AnswersChangeToOptionContentHandler](handlers.md#answerschangetooptioncontenthandler)
 - [MultipleLineMetadataHandler](handlers.md#multiplelinemetadatahandler)
 - [MyAnswerHandler](handlers.md#myanswerhandler)
+- [OptionsUnknownWordHandler](handlers.md#optionsunknownwordhandler)
 
 ## Variables
 
@@ -28,7 +29,7 @@ answers:["选项1内容","选项2内容"]
 
 #### Defined in
 
-[handlers/common.ts:14](https://github.com/enncy/qba-js/blob/6d322de/src/handlers/common.ts#L14)
+[handlers/common.ts:14](https://github.com/enncy/qba-js/blob/f1a46036c23c61113167cbd0147088318d9f6b08/src/handlers/common.ts#L14)
 
 ___
 
@@ -49,7 +50,7 @@ xxxx题目xxxx
 
 #### Defined in
 
-[handlers/common.ts:47](https://github.com/enncy/qba-js/blob/6d322de/src/handlers/common.ts#L47)
+[handlers/common.ts:47](https://github.com/enncy/qba-js/blob/f1a46036c23c61113167cbd0147088318d9f6b08/src/handlers/common.ts#L47)
 
 ___
 
@@ -82,4 +83,16 @@ xxxxx
 
 #### Defined in
 
-[handlers/my.answer.handler.ts:28](https://github.com/enncy/qba-js/blob/6d322de/src/handlers/my.answer.handler.ts#L28)
+[handlers/my.answer.handler.ts:28](https://github.com/enncy/qba-js/blob/f1a46036c23c61113167cbd0147088318d9f6b08/src/handlers/my.answer.handler.ts#L28)
+
+___
+
+### OptionsUnknownWordHandler
+
+• `Const` **OptionsUnknownWordHandler**: [`Handler`](../interfaces/Handler.md)
+
+从 Word 文档中复制粘贴的文本中的选项可能会带有  “● A xxx” 这样的搜进格式，而圆圈就是下方的  ， 全文删除即可得到正确的选项 “A xxx”
+
+#### Defined in
+
+[handlers/common.ts:56](https://github.com/enncy/qba-js/blob/f1a46036c23c61113167cbd0147088318d9f6b08/src/handlers/common.ts#L56)

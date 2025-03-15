@@ -33,17 +33,13 @@
 
 #### Defined in
 
-[interface.ts:74](https://github.com/enncy/qba-js/blob/6d322de/src/interface.ts#L74)
+[interface.ts:74](https://github.com/enncy/qba-js/blob/f1a46036c23c61113167cbd0147088318d9f6b08/src/interface.ts#L74)
 
 ___
 
 ### before
 
 • `Optional` **before**: (`content`: `string`) => `string`
-
-#### Type declaration
-
-▸ (`content`): `string`
 
 题库文本必须满足一定的格式才能被成功解析
 格式:
@@ -52,6 +48,10 @@ ___
 {选项}/{答案}
 
 如果题库文本不满足格式，则需要在此处进行处理
+
+#### Type declaration
+
+▸ (`content`): `string`
 
 ##### Parameters
 
@@ -65,4 +65,4 @@ ___
 
 #### Defined in
 
-[interface.ts:73](https://github.com/enncy/qba-js/blob/6d322de/src/interface.ts#L73)
+[interface.ts:73](https://github.com/enncy/qba-js/blob/f1a46036c23c61113167cbd0147088318d9f6b08/src/interface.ts#L73)

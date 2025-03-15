@@ -17,7 +17,7 @@
 		"push:docs": "git add ./docs && git commit -m \"update docs\" && git push origin main",
 		"publish": "npm run push:docs && npm version patch && npm publish && git push origin main --tags",
 		"lint": "pnpm format && eslint  ./packages --ext .ts,.tsx,.js,.jsx --fix",
-		"format": "prettier -c ./.prettierrc.json  **/*.ts  **/*.js  --write",
+		"format": "prettier -c ./.prettierrc.json  **/*.ts --write",
 		"build:docs": "typedoc src/export.ts"
 	},
 	"author": "enncy",
@@ -33,6 +33,7 @@
 	"devDependencies": {
 		"@types/node": "^20.9.0",
 		"prettier": "^3.0.3",
+		"ts-node": "^10.9.2",
 		"typedoc": "^0.25.3",
 		"typedoc-plugin-markdown": "^3.17.1",
 		"typedoc-theme-hierarchy": "^4.1.2",
