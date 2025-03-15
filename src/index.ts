@@ -192,9 +192,10 @@ export function analysis(content: string): AnalysisResult[] {
 						break;
 					}
 				} else if (STANDARD_ANSWER_START.some((i) => line.includes(i))) {
+					let resolved_lin = line.replace(/[,\.，。 ]/g, '').trim();
 					// 如果答案以ABCD的形式存在，那么直接提取
-					if (line.match(/[A-J]{1,10}/)) {
-						answers = line.match(/[A-J]{1,10}/)?.[0].split('') || [];
+					if (resolved_lin.match(/^[A-J]+$/)) {
+						answers = resolved_lin.split('');
 						break;
 					}
 					answerStart = true;
