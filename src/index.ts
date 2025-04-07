@@ -193,6 +193,9 @@ export function analysis(content: string): AnalysisResult[] {
 					}
 				} else if (STANDARD_ANSWER_START.some((i) => line.includes(i))) {
 					let resolved_lin = line.replace(/[,\.，。 ]/g, '').trim();
+					for (const sas of STANDARD_ANSWER_START) {
+						resolved_lin = resolved_lin.replace(new RegExp(sas + '[:：]'), '').trim();
+					}
 					// 如果答案以ABCD的形式存在，那么直接提取
 					if (resolved_lin.match(/^[A-J]+$/)) {
 						answers = resolved_lin.split('');
