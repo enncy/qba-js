@@ -29,7 +29,7 @@ answers:["选项1内容","选项2内容"]
 
 #### Defined in
 
-[handlers/common.ts:14](https://github.com/enncy/qba-js/blob/4e07069be04b50d13467d13bec01574a3c21f4de/src/handlers/common.ts#L14)
+[handlers/common.ts:14](https://github.com/enncy/qba-js/blob/8bc3996f29e4928a9a205635c20e50a7083d485e/src/handlers/common.ts#L14)
 
 ___
 
@@ -50,7 +50,7 @@ xxxx题目xxxx
 
 #### Defined in
 
-[handlers/common.ts:47](https://github.com/enncy/qba-js/blob/4e07069be04b50d13467d13bec01574a3c21f4de/src/handlers/common.ts#L47)
+[handlers/common.ts:47](https://github.com/enncy/qba-js/blob/8bc3996f29e4928a9a205635c20e50a7083d485e/src/handlers/common.ts#L47)
 
 ___
 
@@ -83,7 +83,7 @@ xxxxx
 
 #### Defined in
 
-[handlers/my.answer.handler.ts:28](https://github.com/enncy/qba-js/blob/4e07069be04b50d13467d13bec01574a3c21f4de/src/handlers/my.answer.handler.ts#L28)
+[handlers/my.answer.handler.ts:28](https://github.com/enncy/qba-js/blob/8bc3996f29e4928a9a205635c20e50a7083d485e/src/handlers/my.answer.handler.ts#L28)
 
 ___
 
@@ -95,4 +95,4 @@ ___
 
 #### Defined in
 
-[handlers/common.ts:56](https://github.com/enncy/qba-js/blob/4e07069be04b50d13467d13bec01574a3c21f4de/src/handlers/common.ts#L56)
+[handlers/common.ts:56](https://github.com/enncy/qba-js/blob/8bc3996f29e4928a9a205635c20e50a7083d485e/src/handlers/common.ts#L56)
