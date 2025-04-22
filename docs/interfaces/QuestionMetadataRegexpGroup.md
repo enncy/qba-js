@@ -22,7 +22,7 @@
 
 #### Defined in
 
-[interface.ts:33](https://github.com/enncy/qba-js/blob/51bfa45cda16c63195ba646b602428862856b997/src/interface.ts#L33)
+[interface.ts:33](https://github.com/enncy/qba-js/blob/ae2de1edc17ef9526d2d8e87b008fa3540aba583/src/interface.ts#L33)
 
 ___
 
@@ -34,4 +34,4 @@ ___
 
 #### Defined in
 
-[interface.ts:28](https://github.com/enncy/qba-js/blob/51bfa45cda16c63195ba646b602428862856b997/src/interface.ts#L28)
+[interface.ts:28](https://github.com/enncy/qba-js/blob/ae2de1edc17ef9526d2d8e87b008fa3540aba583/src/interface.ts#L28)
