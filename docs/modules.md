@@ -40,6 +40,7 @@
 | :------ | :------ | :------ |
 | `content` | `string` | 题库文本 |
 | `options?` | `Object` | - |
+| `options.analysis_options?` | `AnalysisOptions` | - |
 | `options.handlers?` | [`Handler`](interfaces/Handler.md)[] | 处理器 - 可用的默认处理器 : [qba.handlers](modules/handlers.md) |
 | `options.title_metadata_regexp_group?` | [`QuestionMetadataRegexpGroup`](interfaces/QuestionMetadataRegexpGroup.md)[] | 题目信息解析组 可以自定义题目信息解析组 **`Example`** 如果题目为以下的格式 ``` 1. xxxxx [多选题] ``` 则需要自定义为： ```js parse(`1. xxxxx [多选题]...`,{ title_metadata_regexp_group:[ { regexp: /(\[..题\])$/, groups: [['type', 1]] }, { regexp: /^(\d+)\./, groups: [['index', 1]] } ] }) ``` **`Default`** ```ts default_title_metadata_regexp_group ``` |
 
@@ -49,7 +50,7 @@
 
 #### Defined in
 
-[index.ts:299](https://github.com/enncy/qba-js/blob/ae6f783e51d88cac3d9e25ea5bd603077b1ff964/src/index.ts#L299)
+[index.ts:298](https://github.com/enncy/qba-js/blob/6f02b8bc336a8a9a45d37af5abbb062c3a78caba/src/index.ts#L298)
 
 ___
 
@@ -86,7 +87,7 @@ qba.writeToFile(results,'./xxx/result.xlsx','xlsx')
 
 #### Defined in
 
-[index.ts:369](https://github.com/enncy/qba-js/blob/ae6f783e51d88cac3d9e25ea5bd603077b1ff964/src/index.ts#L369)
+[index.ts:369](https://github.com/enncy/qba-js/blob/6f02b8bc336a8a9a45d37af5abbb062c3a78caba/src/index.ts#L369)
 
 ## Variables
 
@@ -98,4 +99,4 @@ qba.writeToFile(results,'./xxx/result.xlsx','xlsx')
 
 #### Defined in
 
-[regexp.ts:6](https://github.com/enncy/qba-js/blob/ae6f783e51d88cac3d9e25ea5bd603077b1ff964/src/regexp.ts#L6)
+[regexp.ts:6](https://github.com/enncy/qba-js/blob/6f02b8bc336a8a9a45d37af5abbb062c3a78caba/src/regexp.ts#L6)

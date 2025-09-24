@@ -30,7 +30,7 @@
 
 #### Defined in
 
-[interface.ts:47](https://github.com/enncy/qba-js/blob/ae6f783e51d88cac3d9e25ea5bd603077b1ff964/src/interface.ts#L47)
+[interface.ts:47](https://github.com/enncy/qba-js/blob/6f02b8bc336a8a9a45d37af5abbb062c3a78caba/src/interface.ts#L47)
 
 ___
 
@@ -42,7 +42,7 @@ ___
 
 #### Defined in
 
-[interface.ts:45](https://github.com/enncy/qba-js/blob/ae6f783e51d88cac3d9e25ea5bd603077b1ff964/src/interface.ts#L45)
+[interface.ts:45](https://github.com/enncy/qba-js/blob/6f02b8bc336a8a9a45d37af5abbb062c3a78caba/src/interface.ts#L45)
 
 ___
 
@@ -54,7 +54,7 @@ ___
 
 #### Defined in
 
-[interface.ts:49](https://github.com/enncy/qba-js/blob/ae6f783e51d88cac3d9e25ea5bd603077b1ff964/src/interface.ts#L49)
+[interface.ts:49](https://github.com/enncy/qba-js/blob/6f02b8bc336a8a9a45d37af5abbb062c3a78caba/src/interface.ts#L49)
 
 ___
 
@@ -66,7 +66,7 @@ ___
 
 #### Defined in
 
-[interface.ts:43](https://github.com/enncy/qba-js/blob/ae6f783e51d88cac3d9e25ea5bd603077b1ff964/src/interface.ts#L43)
+[interface.ts:43](https://github.com/enncy/qba-js/blob/6f02b8bc336a8a9a45d37af5abbb062c3a78caba/src/interface.ts#L43)
 
 ___
 
@@ -78,4 +78,4 @@ ___
 
 #### Defined in
 
-[interface.ts:41](https://github.com/enncy/qba-js/blob/ae6f783e51d88cac3d9e25ea5bd603077b1ff964/src/interface.ts#L41)
+[interface.ts:41](https://github.com/enncy/qba-js/blob/6f02b8bc336a8a9a45d37af5abbb062c3a78caba/src/interface.ts#L41)
