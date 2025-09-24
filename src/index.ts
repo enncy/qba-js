@@ -19,7 +19,13 @@ const ONE_LINE_OPTIONS = /[A-J].{1,}?(?:[ \n])/g;
  * 题库解析
  * @param content 题库文本
  */
-export function analysis(content: string): AnalysisResult[] {
+export function analysis(
+	content: string,
+	options?: {
+		/** 是否在题目中搜索答案，默认 false */
+		search_title_answer?: boolean;
+	}
+): AnalysisResult[] {
 	const results: AnalysisResult[] = [];
 
 	const lines = content
@@ -150,7 +156,7 @@ export function analysis(content: string): AnalysisResult[] {
 		}
 
 		// 提取答案，这里的答案是指题目中括号中的答案，如果没有，则在后续处理答案区域组时再提取
-		if (result.title.match(ANSWER_AREA_REGEXP)) {
+		if (options?.search_title_answer && result.title.match(ANSWER_AREA_REGEXP)) {
 			result.answers = (result.title.match(ANSWER_AREA_REGEXP)?.[2] || '').split('');
 		}
 
