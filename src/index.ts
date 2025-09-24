@@ -15,17 +15,16 @@ const TITLE_START_REGEXP = /^\d{1,5}[:：、．. \n]/;
 const ANSWER_AREA_REGEXP = /([(（[{【)]\s*)([A-J]+)(\s*[】}\]）)])/;
 const ONE_LINE_OPTIONS = /[A-J].{1,}?(?:[ \n])/g;
 
+export interface AnalysisOptions {
+	/** 是否在题目中搜索答案，默认 false */
+	search_title_answer?: boolean;
+}
+
 /**
  * 题库解析
  * @param content 题库文本
  */
-export function analysis(
-	content: string,
-	options?: {
-		/** 是否在题目中搜索答案，默认 false */
-		search_title_answer?: boolean;
-	}
-): AnalysisResult[] {
+export function analysis(content: string, options?: AnalysisOptions): AnalysisResult[] {
 	const results: AnalysisResult[] = [];
 
 	const lines = content
@@ -331,13 +330,14 @@ export function parse(
 		 * @default default_title_metadata_regexp_group
 		 */
 		title_metadata_regexp_group?: QuestionMetadataRegexpGroup[];
+		analysis_options?: AnalysisOptions;
 	}
 ): AnalysisResultWthMetadata[] {
 	// 前置处理器
 	for (const handler of options?.handlers || []) {
 		content = handler.before ? handler.before(content) : content;
 	}
-	const results = analysis(content);
+	const results = analysis(content, options?.analysis_options);
 	let handledResults = handleQuestionMetadata(results, {
 		title_metadata_regexp_group: options?.title_metadata_regexp_group || default_title_metadata_regexp_group
 	});
